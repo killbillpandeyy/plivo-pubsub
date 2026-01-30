@@ -1,0 +1,1263 @@
+WARN  [2026-01-30 11:55:46,448] org.hibernate.validator.internal.properties.javabean.JavaBeanExecutable: HV000254: Missing parameter metadata for ResponseMeteredLevel(String, int), which declares implicit or synthetic parameters. Automatic resolution of generic type information for method parameters may yield incorrect results if multiple parameters have the same erasure. To solve this, compile your code with the '-parameters' flag.
+INFO  [2026-01-30 06:25:46,504] io.dropwizard.core.server.DefaultServerFactory: Registering jersey handler with root path prefix: /
+INFO  [2026-01-30 06:25:46,505] io.dropwizard.core.server.DefaultServerFactory: Registering admin handler with root path prefix: /
+INFO  [2026-01-30 06:25:46,505] com.plivo.server.PlivoApplication: Initializing Plivo PubSub Application
+INFO  [2026-01-30 06:25:46,505] com.plivo.server.PlivoApplication: Topic repository initialized
+INFO  [2026-01-30 06:25:46,505] com.plivo.server.PlivoApplication: PubSub service initialized
+INFO  [2026-01-30 06:25:46,523] com.plivo.server.PlivoApplication: TopicResource registered
+INFO  [2026-01-30 06:25:46,524] com.plivo.server.PlivoApplication: HealthResource registered
+INFO  [2026-01-30 06:25:46,524] com.plivo.server.PlivoApplication: StatsResource registered
+INFO  [2026-01-30 06:25:46,524] com.plivo.server.PlivoApplication: Health checks registered
+INFO  [2026-01-30 06:25:46,525] com.plivo.server.PlivoApplication: Plivo PubSub Application initialization complete
+INFO  [2026-01-30 06:25:46,525] io.dropwizard.core.server.ServerFactory: Starting plivo-pubsub-application
+INFO  [2026-01-30 06:25:46,567] org.eclipse.jetty.setuid.SetUIDListener: Opened application@38eb2fb0{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
+INFO  [2026-01-30 06:25:46,567] org.eclipse.jetty.setuid.SetUIDListener: Opened admin@4567e53d{HTTP/1.1, (http/1.1)}{0.0.0.0:8081}
+INFO  [2026-01-30 06:25:46,567] org.eclipse.jetty.server.Server: jetty-11.0.14; built: 2023-02-22T23:41:48.575Z; git: 4601fe8dd805ce75b69c64466c115a162586641b; jvm 25.0.2
+
+INFO  [2026-01-30 06:25:46,578] com.plivo.server.PlivoApplication: WebSocket endpoint configured at /ws
+INFO  [2026-01-30 06:25:46,691] io.dropwizard.jersey.DropwizardResourceConfig: The following paths were found for the configured resources:
+
+    GET     /health (com.plivo.server.resources.HealthResource)
+    GET     /stats (com.plivo.server.resources.StatsResource)
+    GET     /topics (com.plivo.server.resources.TopicResource)
+    POST    /topics (com.plivo.server.resources.TopicResource)
+    DELETE  /topics/{name} (com.plivo.server.resources.TopicResource)
+
+INFO  [2026-01-30 06:25:46,691] org.eclipse.jetty.server.handler.ContextHandler: Started i.d.j.MutableServletContextHandler@73c3cd09{/,null,AVAILABLE}
+INFO  [2026-01-30 06:25:46,692] io.dropwizard.core.setup.AdminEnvironment: tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+
+INFO  [2026-01-30 06:25:46,692] org.eclipse.jetty.server.handler.ContextHandler: Started i.d.j.MutableServletContextHandler@39ffda4a{/,null,AVAILABLE}
+INFO  [2026-01-30 06:25:46,695] org.eclipse.jetty.server.AbstractConnector: Started application@38eb2fb0{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
+INFO  [2026-01-30 06:25:46,696] org.eclipse.jetty.server.AbstractConnector: Started admin@4567e53d{HTTP/1.1, (http/1.1)}{0.0.0.0:8081}
+INFO  [2026-01-30 06:25:46,696] org.eclipse.jetty.server.Server: Started Server@889d9e8{STARTING}[11.0.14,sto=30000] @753ms
+[0:0:0:0:0:0:0:1] - - [30/Jan/2026:06:25:55 +0000] "GET /health HTTP/1.1" 200 43 "-" "curl/8.7.1" 23
+INFO  [2026-01-30 06:26:05,693] com.plivo.server.resources.TopicResource: Creating topic: orders
+INFO  [2026-01-30 06:26:05,693] com.plivo.server.resources.TopicResource: Topic created successfully: orders
+[0:0:0:0:0:0:0:1] - - [30/Jan/2026:06:26:05 +0000] "POST /topics HTTP/1.1" 201 37 "-" "curl/8.7.1" 10
+[0:0:0:0:0:0:0:1] - - [30/Jan/2026:06:26:05 +0000] "GET /topics HTTP/1.1" 200 46 "-" "curl/8.7.1" 3
+[0:0:0:0:0:0:0:1] - - [30/Jan/2026:06:26:05 +0000] "GET /stats HTTP/1.1" 200 52 "-" "curl/8.7.1" 2
+INFO  [2026-01-30 06:26:05,720] com.plivo.server.resources.TopicResource: Creating topic: payments
+INFO  [2026-01-30 06:26:05,720] com.plivo.server.resources.TopicResource: Topic created successfully: payments
+[0:0:0:0:0:0:0:1] - - [30/Jan/2026:06:26:05 +0000] "POST /topics HTTP/1.1" 201 39 "-" "curl/8.7.1" 2
+[0:0:0:0:0:0:0:1] - - [30/Jan/2026:06:26:05 +0000] "GET /topics HTTP/1.1" 200 82 "-" "curl/8.7.1" 1
+[0:0:0:0:0:0:0:1] - - [30/Jan/2026:06:26:19 +0000] "GET /health HTTP/1.1" 200 44 "-" "python-requests/2.32.5" 1
+[0:0:0:0:0:0:0:1] - - [30/Jan/2026:06:26:19 +0000] "GET /health HTTP/1.1" 200 44 "-" "python-requests/2.32.5" 1
+INFO  [2026-01-30 06:26:19,640] com.plivo.server.resources.TopicResource: Creating topic: orders
+WARN  [2026-01-30 06:26:19,640] com.plivo.server.resources.TopicResource: Topic already exists: orders
+[0:0:0:0:0:0:0:1] - - [30/Jan/2026:06:26:19 +0000] "POST /topics HTTP/1.1" 409 49 "-" "python-requests/2.32.5" 1
+INFO  [2026-01-30 06:26:19,642] com.plivo.server.resources.TopicResource: Creating topic: notifications
+INFO  [2026-01-30 06:26:19,642] com.plivo.server.resources.TopicResource: Topic created successfully: notifications
+[0:0:0:0:0:0:0:1] - - [30/Jan/2026:06:26:19 +0000] "POST /topics HTTP/1.1" 201 44 "-" "python-requests/2.32.5" 0
+[0:0:0:0:0:0:0:1] - - [30/Jan/2026:06:26:19 +0000] "GET /topics HTTP/1.1" 200 123 "-" "python-requests/2.32.5" 1
+[0:0:0:0:0:0:0:1] - - [30/Jan/2026:06:26:19 +0000] "GET /stats HTTP/1.1" 200 141 "-" "python-requests/2.32.5" 0
+[0:0:0:0:0:0:0:1] - - [30/Jan/2026:06:26:19 +0000] "GET /ws HTTP/1.1" 101 0 "-" "Python/3.9 websockets/15.0.1" 11
+INFO  [2026-01-30 06:26:19,667] com.plivo.server.websocket.PubSubWebSocket: WebSocket connection established: /[0:0:0:0:0:0:0:1]:52349
+[0:0:0:0:0:0:0:1] - - [30/Jan/2026:06:26:19 +0000] "GET /ws HTTP/1.1" 101 0 "-" "Python/3.9 websockets/15.0.1" 1
+INFO  [2026-01-30 06:26:19,668] com.plivo.server.websocket.PubSubWebSocket: WebSocket connection established: /[0:0:0:0:0:0:0:1]:52350
+[0:0:0:0:0:0:0:1] - - [30/Jan/2026:06:26:19 +0000] "GET /ws HTTP/1.1" 101 0 "-" "Python/3.9 websockets/15.0.1" 1
+INFO  [2026-01-30 06:26:19,669] com.plivo.server.websocket.PubSubWebSocket: WebSocket connection established: /[0:0:0:0:0:0:0:1]:52351
+[0:0:0:0:0:0:0:1] - - [30/Jan/2026:06:26:19 +0000] "GET /ws HTTP/1.1" 101 0 "-" "Python/3.9 websockets/15.0.1" 0
+INFO  [2026-01-30 06:26:19,670] com.plivo.server.websocket.PubSubWebSocket: WebSocket connection established: /[0:0:0:0:0:0:0:1]:52352
+[0:0:0:0:0:0:0:1] - - [30/Jan/2026:06:26:19 +0000] "GET /ws HTTP/1.1" 101 0 "-" "Python/3.9 websockets/15.0.1" 0
+INFO  [2026-01-30 06:26:19,671] com.plivo.server.websocket.PubSubWebSocket: WebSocket connection established: /[0:0:0:0:0:0:0:1]:52353
+INFO  [2026-01-30 06:26:19,675] com.plivo.core.service.PubSubService: Client orders_sub_1 subscribed to topic orders
+INFO  [2026-01-30 06:26:19,678] com.plivo.core.service.PubSubService: Client orders_sub_2 subscribed to topic orders
+INFO  [2026-01-30 06:26:19,678] com.plivo.core.service.PubSubService: Client notif_sub_1 subscribed to topic notifications
+INFO  [2026-01-30 06:26:19,679] com.plivo.core.service.PubSubService: Client notif_sub_2 subscribed to topic notifications
+INFO  [2026-01-30 06:26:19,680] com.plivo.core.service.PubSubService: Published message order_001 to topic orders
+INFO  [2026-01-30 06:26:19,682] com.plivo.core.service.PubSubService: Published message notif_001 to topic notifications
+INFO  [2026-01-30 06:26:19,683] com.plivo.server.websocket.PubSubWebSocket: WebSocket connection closed: 1000 - null
+INFO  [2026-01-30 06:26:19,683] com.plivo.core.service.PubSubService: Removed subscription for client orders_sub_1 from topic orders
+INFO  [2026-01-30 06:26:19,683] com.plivo.server.websocket.PubSubWebSocket: Removed all subscriptions for client: orders_sub_1
+INFO  [2026-01-30 06:26:19,683] com.plivo.server.websocket.PubSubWebSocket: WebSocket connection closed: 1000 - null
+INFO  [2026-01-30 06:26:19,683] com.plivo.core.service.PubSubService: Removed subscription for client orders_sub_2 from topic orders
+INFO  [2026-01-30 06:26:19,683] com.plivo.server.websocket.PubSubWebSocket: Removed all subscriptions for client: orders_sub_2
+INFO  [2026-01-30 06:26:19,683] com.plivo.server.websocket.PubSubWebSocket: WebSocket connection closed: 1000 - null
+INFO  [2026-01-30 06:26:19,684] com.plivo.core.service.PubSubService: Removed subscription for client notif_sub_1 from topic notifications
+INFO  [2026-01-30 06:26:19,684] com.plivo.server.websocket.PubSubWebSocket: Removed all subscriptions for client: notif_sub_1
+INFO  [2026-01-30 06:26:19,684] com.plivo.server.websocket.PubSubWebSocket: WebSocket connection closed: 1000 - null
+INFO  [2026-01-30 06:26:19,684] com.plivo.core.service.PubSubService: Removed subscription for client notif_sub_2 from topic notifications
+INFO  [2026-01-30 06:26:19,684] com.plivo.server.websocket.PubSubWebSocket: Removed all subscriptions for client: notif_sub_2
+INFO  [2026-01-30 06:26:19,684] com.plivo.server.websocket.PubSubWebSocket: WebSocket connection closed: 1000 - null
+[0:0:0:0:0:0:0:1] - - [30/Jan/2026:06:26:19 +0000] "GET /ws HTTP/1.1" 101 0 "-" "Python/3.9 websockets/15.0.1" 1
+INFO  [2026-01-30 06:26:19,686] com.plivo.server.websocket.PubSubWebSocket: WebSocket connection established: /[0:0:0:0:0:0:0:1]:52354
+[0:0:0:0:0:0:0:1] - - [30/Jan/2026:06:26:19 +0000] "GET /ws HTTP/1.1" 101 0 "-" "Python/3.9 websockets/15.0.1" 1
+INFO  [2026-01-30 06:26:19,687] com.plivo.server.websocket.PubSubWebSocket: WebSocket connection established: /[0:0:0:0:0:0:0:1]:52355
+[0:0:0:0:0:0:0:1] - - [30/Jan/2026:06:26:19 +0000] "GET /ws HTTP/1.1" 101 0 "-" "Python/3.9 websockets/15.0.1" 1
+INFO  [2026-01-30 06:26:19,688] com.plivo.server.websocket.PubSubWebSocket: WebSocket connection established: /[0:0:0:0:0:0:0:1]:52356
+INFO  [2026-01-30 06:26:19,688] com.plivo.core.service.PubSubService: Client isolation_orders subscribed to topic orders
+INFO  [2026-01-30 06:26:19,688] com.plivo.core.service.PubSubService: Client isolation_notif subscribed to topic notifications
+INFO  [2026-01-30 06:26:19,689] com.plivo.core.service.PubSubService: Published message iso_test_001 to topic orders
+INFO  [2026-01-30 06:26:20,691] com.plivo.server.websocket.PubSubWebSocket: WebSocket connection closed: 1000 - null
+INFO  [2026-01-30 06:26:20,691] com.plivo.core.service.PubSubService: Removed subscription for client isolation_orders from topic orders
+INFO  [2026-01-30 06:26:20,691] com.plivo.server.websocket.PubSubWebSocket: Removed all subscriptions for client: isolation_orders
+INFO  [2026-01-30 06:26:20,691] com.plivo.server.websocket.PubSubWebSocket: WebSocket connection closed: 1000 - null
+INFO  [2026-01-30 06:26:20,691] com.plivo.core.service.PubSubService: Removed subscription for client isolation_notif from topic notifications
+INFO  [2026-01-30 06:26:20,691] com.plivo.server.websocket.PubSubWebSocket: Removed all subscriptions for client: isolation_notif
+INFO  [2026-01-30 06:26:20,692] com.plivo.server.websocket.PubSubWebSocket: WebSocket connection closed: 1000 - null
+[0:0:0:0:0:0:0:1] - - [30/Jan/2026:06:26:20 +0000] "GET /ws HTTP/1.1" 101 0 "-" "Python/3.9 websockets/15.0.1" 1
+INFO  [2026-01-30 06:26:20,696] com.plivo.server.websocket.PubSubWebSocket: WebSocket connection established: /[0:0:0:0:0:0:0:1]:52357
+[0:0:0:0:0:0:0:1] - - [30/Jan/2026:06:26:20 +0000] "GET /ws HTTP/1.1" 101 0 "-" "Python/3.9 websockets/15.0.1" 1
+INFO  [2026-01-30 06:26:20,698] com.plivo.server.websocket.PubSubWebSocket: WebSocket connection established: /[0:0:0:0:0:0:0:1]:52358
+[0:0:0:0:0:0:0:1] - - [30/Jan/2026:06:26:20 +0000] "GET /ws HTTP/1.1" 101 0 "-" "Python/3.9 websockets/15.0.1" 1
+INFO  [2026-01-30 06:26:20,700] com.plivo.server.websocket.PubSubWebSocket: WebSocket connection established: /[0:0:0:0:0:0:0:1]:52359
+[0:0:0:0:0:0:0:1] - - [30/Jan/2026:06:26:20 +0000] "GET /ws HTTP/1.1" 101 0 "-" "Python/3.9 websockets/15.0.1" 1
+INFO  [2026-01-30 06:26:20,702] com.plivo.server.websocket.PubSubWebSocket: WebSocket connection established: /[0:0:0:0:0:0:0:1]:52360
+INFO  [2026-01-30 06:26:20,702] com.plivo.core.service.PubSubService: Client multi_pub_sub subscribed to topic orders
+INFO  [2026-01-30 06:26:20,703] com.plivo.core.service.PubSubService: Published message pub1_msg to topic orders
+INFO  [2026-01-30 06:26:20,703] com.plivo.core.service.PubSubService: Published message pub2_msg to topic orders
+INFO  [2026-01-30 06:26:20,703] com.plivo.core.service.PubSubService: Published message pub3_msg to topic orders
+INFO  [2026-01-30 06:26:20,704] com.plivo.server.websocket.PubSubWebSocket: WebSocket connection closed: 1000 - null
+INFO  [2026-01-30 06:26:20,704] com.plivo.core.service.PubSubService: Removed subscription for client multi_pub_sub from topic orders
+INFO  [2026-01-30 06:26:20,704] com.plivo.server.websocket.PubSubWebSocket: Removed all subscriptions for client: multi_pub_sub
+INFO  [2026-01-30 06:26:20,704] com.plivo.server.websocket.PubSubWebSocket: WebSocket connection closed: 1000 - null
+INFO  [2026-01-30 06:26:20,705] com.plivo.server.websocket.PubSubWebSocket: WebSocket connection closed: 1000 - null
+INFO  [2026-01-30 06:26:20,705] com.plivo.server.websocket.PubSubWebSocket: WebSocket connection closed: 1000 - null
+[0:0:0:0:0:0:0:1] - - [30/Jan/2026:06:26:20 +0000] "GET /ws HTTP/1.1" 101 0 "-" "Python/3.9 websockets/15.0.1" 1
+INFO  [2026-01-30 06:26:20,707] com.plivo.server.websocket.PubSubWebSocket: WebSocket connection established: /[0:0:0:0:0:0:0:1]:52361
+[0:0:0:0:0:0:0:1] - - [30/Jan/2026:06:26:20 +0000] "GET /ws HTTP/1.1" 101 0 "-" "Python/3.9 websockets/15.0.1" 1
+INFO  [2026-01-30 06:26:20,709] com.plivo.server.websocket.PubSubWebSocket: WebSocket connection established: /[0:0:0:0:0:0:0:1]:52362
+INFO  [2026-01-30 06:26:20,709] com.plivo.core.service.PubSubService: Published message hist_msg_1 to topic notifications
+INFO  [2026-01-30 06:26:20,710] com.plivo.core.service.PubSubService: Published message hist_msg_2 to topic notifications
+INFO  [2026-01-30 06:26:20,710] com.plivo.core.service.PubSubService: Published message hist_msg_3 to topic notifications
+INFO  [2026-01-30 06:26:20,710] com.plivo.core.service.PubSubService: Published message hist_msg_4 to topic notifications
+INFO  [2026-01-30 06:26:20,711] com.plivo.core.service.PubSubService: Published message hist_msg_5 to topic notifications
+INFO  [2026-01-30 06:26:20,712] com.plivo.core.service.PubSubService: Client history_tester subscribed to topic notifications
+INFO  [2026-01-30 06:26:20,712] com.plivo.core.service.PubSubService: Sending 3 historical messages to client history_tester
+INFO  [2026-01-30 06:26:20,712] com.plivo.server.websocket.PubSubWebSocket: WebSocket connection closed: 1000 - null
+INFO  [2026-01-30 06:26:20,713] com.plivo.server.websocket.PubSubWebSocket: WebSocket connection closed: 1000 - null
+INFO  [2026-01-30 06:26:20,713] com.plivo.core.service.PubSubService: Removed subscription for client history_tester from topic notifications
+INFO  [2026-01-30 06:26:20,713] com.plivo.server.websocket.PubSubWebSocket: Removed all subscriptions for client: history_tester
+[0:0:0:0:0:0:0:1] - - [30/Jan/2026:06:26:20 +0000] "GET /stats HTTP/1.1" 200 141 "-" "python-requests/2.32.5" 1
+INFO  [2026-01-30 06:26:20,720] com.plivo.server.resources.TopicResource: Deleting topic: orders
+INFO  [2026-01-30 06:26:20,720] com.plivo.server.resources.TopicResource: Topic deleted successfully: orders
+[0:0:0:0:0:0:0:1] - - [30/Jan/2026:06:26:20 +0000] "DELETE /topics/orders HTTP/1.1" 200 37 "-" "python-requests/2.32.5" 3
+INFO  [2026-01-30 06:26:20,722] com.plivo.server.resources.TopicResource: Deleting topic: notifications
+INFO  [2026-01-30 06:26:20,722] com.plivo.server.resources.TopicResource: Topic deleted successfully: notifications
+[0:0:0:0:0:0:0:1] - - [30/Jan/2026:06:26:20 +0000] "DELETE /topics/notifications HTTP/1.1" 200 44 "-" "python-requests/2.32.5" 1
+[0:0:0:0:0:0:0:1] - - [30/Jan/2026:06:26:38 +0000] "GET /health HTTP/1.1" 200 44 "-" "python-requests/2.32.5" 6
+INFO  [2026-01-30 06:26:38,313] com.plivo.server.resources.TopicResource: Creating topic: backpressure-test
+INFO  [2026-01-30 06:26:38,313] com.plivo.server.resources.TopicResource: Topic created successfully: backpressure-test
+[0:0:0:0:0:0:0:1] - - [30/Jan/2026:06:26:38 +0000] "POST /topics HTTP/1.1" 201 48 "-" "python-requests/2.32.5" 2
+[0:0:0:0:0:0:0:1] - - [30/Jan/2026:06:26:38 +0000] "GET /ws HTTP/1.1" 101 0 "-" "Python/3.9 websockets/15.0.1" 1
+INFO  [2026-01-30 06:26:38,324] com.plivo.server.websocket.PubSubWebSocket: WebSocket connection established: /[0:0:0:0:0:0:0:1]:52392
+INFO  [2026-01-30 06:26:38,324] com.plivo.core.service.PubSubService: Published message msg_1 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,325] com.plivo.core.service.PubSubService: Published message msg_2 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,325] com.plivo.core.service.PubSubService: Published message msg_3 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,325] com.plivo.core.service.PubSubService: Published message msg_4 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,325] com.plivo.core.service.PubSubService: Published message msg_5 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,326] com.plivo.core.service.PubSubService: Published message msg_6 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,326] com.plivo.core.service.PubSubService: Published message msg_7 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,326] com.plivo.core.service.PubSubService: Published message msg_8 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,327] com.plivo.core.service.PubSubService: Published message msg_9 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,327] com.plivo.core.service.PubSubService: Published message msg_10 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,327] com.plivo.core.service.PubSubService: Published message msg_11 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,328] com.plivo.core.service.PubSubService: Published message msg_12 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,328] com.plivo.core.service.PubSubService: Published message msg_13 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,328] com.plivo.core.service.PubSubService: Published message msg_14 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,328] com.plivo.core.service.PubSubService: Published message msg_15 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,329] com.plivo.core.service.PubSubService: Published message msg_16 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,329] com.plivo.core.service.PubSubService: Published message msg_17 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,329] com.plivo.core.service.PubSubService: Published message msg_18 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,329] com.plivo.core.service.PubSubService: Published message msg_19 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,330] com.plivo.core.service.PubSubService: Published message msg_20 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,330] com.plivo.core.service.PubSubService: Published message msg_21 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,330] com.plivo.core.service.PubSubService: Published message msg_22 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,330] com.plivo.core.service.PubSubService: Published message msg_23 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,331] com.plivo.core.service.PubSubService: Published message msg_24 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,331] com.plivo.core.service.PubSubService: Published message msg_25 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,331] com.plivo.core.service.PubSubService: Published message msg_26 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,332] com.plivo.core.service.PubSubService: Published message msg_27 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,332] com.plivo.core.service.PubSubService: Published message msg_28 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,332] com.plivo.core.service.PubSubService: Published message msg_29 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,333] com.plivo.core.service.PubSubService: Published message msg_30 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,333] com.plivo.core.service.PubSubService: Published message msg_31 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,333] com.plivo.core.service.PubSubService: Published message msg_32 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,333] com.plivo.core.service.PubSubService: Published message msg_33 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,334] com.plivo.core.service.PubSubService: Published message msg_34 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,334] com.plivo.core.service.PubSubService: Published message msg_35 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,334] com.plivo.core.service.PubSubService: Published message msg_36 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,335] com.plivo.core.service.PubSubService: Published message msg_37 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,335] com.plivo.core.service.PubSubService: Published message msg_38 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,335] com.plivo.core.service.PubSubService: Published message msg_39 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,335] com.plivo.core.service.PubSubService: Published message msg_40 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,336] com.plivo.core.service.PubSubService: Published message msg_41 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,336] com.plivo.core.service.PubSubService: Published message msg_42 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,336] com.plivo.core.service.PubSubService: Published message msg_43 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,336] com.plivo.core.service.PubSubService: Published message msg_44 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,337] com.plivo.core.service.PubSubService: Published message msg_45 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,337] com.plivo.core.service.PubSubService: Published message msg_46 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,337] com.plivo.core.service.PubSubService: Published message msg_47 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,338] com.plivo.core.service.PubSubService: Published message msg_48 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,338] com.plivo.core.service.PubSubService: Published message msg_49 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,338] com.plivo.core.service.PubSubService: Published message msg_50 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,338] com.plivo.core.service.PubSubService: Published message msg_51 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,339] com.plivo.core.service.PubSubService: Published message msg_52 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,339] com.plivo.core.service.PubSubService: Published message msg_53 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,339] com.plivo.core.service.PubSubService: Published message msg_54 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,340] com.plivo.core.service.PubSubService: Published message msg_55 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,340] com.plivo.core.service.PubSubService: Published message msg_56 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,340] com.plivo.core.service.PubSubService: Published message msg_57 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,340] com.plivo.core.service.PubSubService: Published message msg_58 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,341] com.plivo.core.service.PubSubService: Published message msg_59 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,341] com.plivo.core.service.PubSubService: Published message msg_60 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,341] com.plivo.core.service.PubSubService: Published message msg_61 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,341] com.plivo.core.service.PubSubService: Published message msg_62 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,342] com.plivo.core.service.PubSubService: Published message msg_63 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,342] com.plivo.core.service.PubSubService: Published message msg_64 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,342] com.plivo.core.service.PubSubService: Published message msg_65 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,342] com.plivo.core.service.PubSubService: Published message msg_66 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,343] com.plivo.core.service.PubSubService: Published message msg_67 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,343] com.plivo.core.service.PubSubService: Published message msg_68 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,343] com.plivo.core.service.PubSubService: Published message msg_69 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,343] com.plivo.core.service.PubSubService: Published message msg_70 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,344] com.plivo.core.service.PubSubService: Published message msg_71 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,344] com.plivo.core.service.PubSubService: Published message msg_72 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,344] com.plivo.core.service.PubSubService: Published message msg_73 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,344] com.plivo.core.service.PubSubService: Published message msg_74 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,345] com.plivo.core.service.PubSubService: Published message msg_75 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,345] com.plivo.core.service.PubSubService: Published message msg_76 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,345] com.plivo.core.service.PubSubService: Published message msg_77 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,345] com.plivo.core.service.PubSubService: Published message msg_78 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,346] com.plivo.core.service.PubSubService: Published message msg_79 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,346] com.plivo.core.service.PubSubService: Published message msg_80 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,346] com.plivo.core.service.PubSubService: Published message msg_81 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,346] com.plivo.core.service.PubSubService: Published message msg_82 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,347] com.plivo.core.service.PubSubService: Published message msg_83 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,347] com.plivo.core.service.PubSubService: Published message msg_84 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,347] com.plivo.core.service.PubSubService: Published message msg_85 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,348] com.plivo.core.service.PubSubService: Published message msg_86 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,348] com.plivo.core.service.PubSubService: Published message msg_87 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,348] com.plivo.core.service.PubSubService: Published message msg_88 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,348] com.plivo.core.service.PubSubService: Published message msg_89 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,349] com.plivo.core.service.PubSubService: Published message msg_90 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,349] com.plivo.core.service.PubSubService: Published message msg_91 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,349] com.plivo.core.service.PubSubService: Published message msg_92 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,350] com.plivo.core.service.PubSubService: Published message msg_93 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,350] com.plivo.core.service.PubSubService: Published message msg_94 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,350] com.plivo.core.service.PubSubService: Published message msg_95 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,350] com.plivo.core.service.PubSubService: Published message msg_96 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,351] com.plivo.core.service.PubSubService: Published message msg_97 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,351] com.plivo.core.service.PubSubService: Published message msg_98 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,351] com.plivo.core.service.PubSubService: Published message msg_99 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,351] com.plivo.core.service.PubSubService: Published message msg_100 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,352] com.plivo.core.service.PubSubService: Published message msg_101 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,352] com.plivo.core.service.PubSubService: Published message msg_102 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,352] com.plivo.core.service.PubSubService: Published message msg_103 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,352] com.plivo.core.service.PubSubService: Published message msg_104 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,353] com.plivo.core.service.PubSubService: Published message msg_105 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,353] com.plivo.core.service.PubSubService: Published message msg_106 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,353] com.plivo.core.service.PubSubService: Published message msg_107 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,353] com.plivo.core.service.PubSubService: Published message msg_108 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,354] com.plivo.core.service.PubSubService: Published message msg_109 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,354] com.plivo.core.service.PubSubService: Published message msg_110 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,354] com.plivo.core.service.PubSubService: Published message msg_111 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,355] com.plivo.core.service.PubSubService: Published message msg_112 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,355] com.plivo.core.service.PubSubService: Published message msg_113 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,355] com.plivo.core.service.PubSubService: Published message msg_114 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,355] com.plivo.core.service.PubSubService: Published message msg_115 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,356] com.plivo.core.service.PubSubService: Published message msg_116 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,356] com.plivo.core.service.PubSubService: Published message msg_117 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,356] com.plivo.core.service.PubSubService: Published message msg_118 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,356] com.plivo.core.service.PubSubService: Published message msg_119 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,357] com.plivo.core.service.PubSubService: Published message msg_120 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,357] com.plivo.core.service.PubSubService: Published message msg_121 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,357] com.plivo.core.service.PubSubService: Published message msg_122 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,357] com.plivo.core.service.PubSubService: Published message msg_123 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,358] com.plivo.core.service.PubSubService: Published message msg_124 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,358] com.plivo.core.service.PubSubService: Published message msg_125 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,358] com.plivo.core.service.PubSubService: Published message msg_126 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,358] com.plivo.core.service.PubSubService: Published message msg_127 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,359] com.plivo.core.service.PubSubService: Published message msg_128 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,359] com.plivo.core.service.PubSubService: Published message msg_129 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,359] com.plivo.core.service.PubSubService: Published message msg_130 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,359] com.plivo.core.service.PubSubService: Published message msg_131 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,360] com.plivo.core.service.PubSubService: Published message msg_132 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,360] com.plivo.core.service.PubSubService: Published message msg_133 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,361] com.plivo.core.service.PubSubService: Published message msg_134 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,361] com.plivo.core.service.PubSubService: Published message msg_135 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,361] com.plivo.core.service.PubSubService: Published message msg_136 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,361] com.plivo.core.service.PubSubService: Published message msg_137 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,362] com.plivo.core.service.PubSubService: Published message msg_138 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,362] com.plivo.core.service.PubSubService: Published message msg_139 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,362] com.plivo.core.service.PubSubService: Published message msg_140 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,362] com.plivo.core.service.PubSubService: Published message msg_141 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,363] com.plivo.core.service.PubSubService: Published message msg_142 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,363] com.plivo.core.service.PubSubService: Published message msg_143 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,363] com.plivo.core.service.PubSubService: Published message msg_144 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,363] com.plivo.core.service.PubSubService: Published message msg_145 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,364] com.plivo.core.service.PubSubService: Published message msg_146 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,364] com.plivo.core.service.PubSubService: Published message msg_147 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,364] com.plivo.core.service.PubSubService: Published message msg_148 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,364] com.plivo.core.service.PubSubService: Published message msg_149 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,365] com.plivo.core.service.PubSubService: Published message msg_150 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,365] com.plivo.core.service.PubSubService: Published message msg_151 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,365] com.plivo.core.service.PubSubService: Published message msg_152 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,365] com.plivo.core.service.PubSubService: Published message msg_153 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,366] com.plivo.core.service.PubSubService: Published message msg_154 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,366] com.plivo.core.service.PubSubService: Published message msg_155 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,366] com.plivo.core.service.PubSubService: Published message msg_156 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,366] com.plivo.core.service.PubSubService: Published message msg_157 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,367] com.plivo.core.service.PubSubService: Published message msg_158 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,367] com.plivo.core.service.PubSubService: Published message msg_159 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,367] com.plivo.core.service.PubSubService: Published message msg_160 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,367] com.plivo.core.service.PubSubService: Published message msg_161 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,367] com.plivo.core.service.PubSubService: Published message msg_162 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,368] com.plivo.core.service.PubSubService: Published message msg_163 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,368] com.plivo.core.service.PubSubService: Published message msg_164 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,368] com.plivo.core.service.PubSubService: Published message msg_165 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,368] com.plivo.core.service.PubSubService: Published message msg_166 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,369] com.plivo.core.service.PubSubService: Published message msg_167 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,369] com.plivo.core.service.PubSubService: Published message msg_168 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,369] com.plivo.core.service.PubSubService: Published message msg_169 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,369] com.plivo.core.service.PubSubService: Published message msg_170 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,369] com.plivo.core.service.PubSubService: Published message msg_171 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,370] com.plivo.core.service.PubSubService: Published message msg_172 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,370] com.plivo.core.service.PubSubService: Published message msg_173 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,370] com.plivo.core.service.PubSubService: Published message msg_174 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,370] com.plivo.core.service.PubSubService: Published message msg_175 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,371] com.plivo.core.service.PubSubService: Published message msg_176 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,371] com.plivo.core.service.PubSubService: Published message msg_177 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,371] com.plivo.core.service.PubSubService: Published message msg_178 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,371] com.plivo.core.service.PubSubService: Published message msg_179 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,372] com.plivo.core.service.PubSubService: Published message msg_180 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,372] com.plivo.core.service.PubSubService: Published message msg_181 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,372] com.plivo.core.service.PubSubService: Published message msg_182 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,372] com.plivo.core.service.PubSubService: Published message msg_183 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,373] com.plivo.core.service.PubSubService: Published message msg_184 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,373] com.plivo.core.service.PubSubService: Published message msg_185 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,373] com.plivo.core.service.PubSubService: Published message msg_186 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,373] com.plivo.core.service.PubSubService: Published message msg_187 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,373] com.plivo.core.service.PubSubService: Published message msg_188 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,374] com.plivo.core.service.PubSubService: Published message msg_189 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,374] com.plivo.core.service.PubSubService: Published message msg_190 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,374] com.plivo.core.service.PubSubService: Published message msg_191 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,374] com.plivo.core.service.PubSubService: Published message msg_192 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,374] com.plivo.core.service.PubSubService: Published message msg_193 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,375] com.plivo.core.service.PubSubService: Published message msg_194 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,375] com.plivo.core.service.PubSubService: Published message msg_195 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,375] com.plivo.core.service.PubSubService: Published message msg_196 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,375] com.plivo.core.service.PubSubService: Published message msg_197 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,376] com.plivo.core.service.PubSubService: Published message msg_198 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,376] com.plivo.core.service.PubSubService: Published message msg_199 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,376] com.plivo.core.service.PubSubService: Published message msg_200 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,376] com.plivo.core.service.PubSubService: Published message msg_201 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,376] com.plivo.core.service.PubSubService: Published message msg_202 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,377] com.plivo.core.service.PubSubService: Published message msg_203 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,377] com.plivo.core.service.PubSubService: Published message msg_204 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,377] com.plivo.core.service.PubSubService: Published message msg_205 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,377] com.plivo.core.service.PubSubService: Published message msg_206 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,377] com.plivo.core.service.PubSubService: Published message msg_207 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,378] com.plivo.core.service.PubSubService: Published message msg_208 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,378] com.plivo.core.service.PubSubService: Published message msg_209 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,378] com.plivo.core.service.PubSubService: Published message msg_210 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,378] com.plivo.core.service.PubSubService: Published message msg_211 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,378] com.plivo.core.service.PubSubService: Published message msg_212 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,379] com.plivo.core.service.PubSubService: Published message msg_213 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,379] com.plivo.core.service.PubSubService: Published message msg_214 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,379] com.plivo.core.service.PubSubService: Published message msg_215 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,379] com.plivo.core.service.PubSubService: Published message msg_216 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,380] com.plivo.core.service.PubSubService: Published message msg_217 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,380] com.plivo.core.service.PubSubService: Published message msg_218 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,380] com.plivo.core.service.PubSubService: Published message msg_219 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,380] com.plivo.core.service.PubSubService: Published message msg_220 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,380] com.plivo.core.service.PubSubService: Published message msg_221 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,381] com.plivo.core.service.PubSubService: Published message msg_222 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,381] com.plivo.core.service.PubSubService: Published message msg_223 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,381] com.plivo.core.service.PubSubService: Published message msg_224 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,381] com.plivo.core.service.PubSubService: Published message msg_225 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,381] com.plivo.core.service.PubSubService: Published message msg_226 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,382] com.plivo.core.service.PubSubService: Published message msg_227 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,382] com.plivo.core.service.PubSubService: Published message msg_228 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,382] com.plivo.core.service.PubSubService: Published message msg_229 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,382] com.plivo.core.service.PubSubService: Published message msg_230 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,382] com.plivo.core.service.PubSubService: Published message msg_231 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,383] com.plivo.core.service.PubSubService: Published message msg_232 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,383] com.plivo.core.service.PubSubService: Published message msg_233 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,383] com.plivo.core.service.PubSubService: Published message msg_234 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,383] com.plivo.core.service.PubSubService: Published message msg_235 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,384] com.plivo.core.service.PubSubService: Published message msg_236 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,384] com.plivo.core.service.PubSubService: Published message msg_237 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,384] com.plivo.core.service.PubSubService: Published message msg_238 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,384] com.plivo.core.service.PubSubService: Published message msg_239 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,384] com.plivo.core.service.PubSubService: Published message msg_240 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,385] com.plivo.core.service.PubSubService: Published message msg_241 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,385] com.plivo.core.service.PubSubService: Published message msg_242 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,385] com.plivo.core.service.PubSubService: Published message msg_243 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,385] com.plivo.core.service.PubSubService: Published message msg_244 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,385] com.plivo.core.service.PubSubService: Published message msg_245 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,385] com.plivo.core.service.PubSubService: Published message msg_246 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,386] com.plivo.core.service.PubSubService: Published message msg_247 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,386] com.plivo.core.service.PubSubService: Published message msg_248 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,386] com.plivo.core.service.PubSubService: Published message msg_249 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,386] com.plivo.core.service.PubSubService: Published message msg_250 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,386] com.plivo.core.service.PubSubService: Published message msg_251 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,387] com.plivo.core.service.PubSubService: Published message msg_252 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,387] com.plivo.core.service.PubSubService: Published message msg_253 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,387] com.plivo.core.service.PubSubService: Published message msg_254 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,387] com.plivo.core.service.PubSubService: Published message msg_255 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,387] com.plivo.core.service.PubSubService: Published message msg_256 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,388] com.plivo.core.service.PubSubService: Published message msg_257 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,388] com.plivo.core.service.PubSubService: Published message msg_258 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,388] com.plivo.core.service.PubSubService: Published message msg_259 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,388] com.plivo.core.service.PubSubService: Published message msg_260 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,388] com.plivo.core.service.PubSubService: Published message msg_261 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,389] com.plivo.core.service.PubSubService: Published message msg_262 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,389] com.plivo.core.service.PubSubService: Published message msg_263 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,389] com.plivo.core.service.PubSubService: Published message msg_264 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,389] com.plivo.core.service.PubSubService: Published message msg_265 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,389] com.plivo.core.service.PubSubService: Published message msg_266 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,390] com.plivo.core.service.PubSubService: Published message msg_267 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,390] com.plivo.core.service.PubSubService: Published message msg_268 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,390] com.plivo.core.service.PubSubService: Published message msg_269 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,390] com.plivo.core.service.PubSubService: Published message msg_270 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,391] com.plivo.core.service.PubSubService: Published message msg_271 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,391] com.plivo.core.service.PubSubService: Published message msg_272 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,391] com.plivo.core.service.PubSubService: Published message msg_273 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,391] com.plivo.core.service.PubSubService: Published message msg_274 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,391] com.plivo.core.service.PubSubService: Published message msg_275 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,392] com.plivo.core.service.PubSubService: Published message msg_276 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,392] com.plivo.core.service.PubSubService: Published message msg_277 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,392] com.plivo.core.service.PubSubService: Published message msg_278 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,392] com.plivo.core.service.PubSubService: Published message msg_279 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,392] com.plivo.core.service.PubSubService: Published message msg_280 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,392] com.plivo.core.service.PubSubService: Published message msg_281 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,393] com.plivo.core.service.PubSubService: Published message msg_282 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,393] com.plivo.core.service.PubSubService: Published message msg_283 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,393] com.plivo.core.service.PubSubService: Published message msg_284 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,393] com.plivo.core.service.PubSubService: Published message msg_285 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,393] com.plivo.core.service.PubSubService: Published message msg_286 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,394] com.plivo.core.service.PubSubService: Published message msg_287 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,394] com.plivo.core.service.PubSubService: Published message msg_288 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,394] com.plivo.core.service.PubSubService: Published message msg_289 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,394] com.plivo.core.service.PubSubService: Published message msg_290 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,394] com.plivo.core.service.PubSubService: Published message msg_291 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,394] com.plivo.core.service.PubSubService: Published message msg_292 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,395] com.plivo.core.service.PubSubService: Published message msg_293 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,395] com.plivo.core.service.PubSubService: Published message msg_294 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,395] com.plivo.core.service.PubSubService: Published message msg_295 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,395] com.plivo.core.service.PubSubService: Published message msg_296 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,395] com.plivo.core.service.PubSubService: Published message msg_297 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,395] com.plivo.core.service.PubSubService: Published message msg_298 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,396] com.plivo.core.service.PubSubService: Published message msg_299 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,396] com.plivo.core.service.PubSubService: Published message msg_300 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,396] com.plivo.core.service.PubSubService: Published message msg_301 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,396] com.plivo.core.service.PubSubService: Published message msg_302 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,396] com.plivo.core.service.PubSubService: Published message msg_303 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,397] com.plivo.core.service.PubSubService: Published message msg_304 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,397] com.plivo.core.service.PubSubService: Published message msg_305 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,397] com.plivo.core.service.PubSubService: Published message msg_306 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,397] com.plivo.core.service.PubSubService: Published message msg_307 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,397] com.plivo.core.service.PubSubService: Published message msg_308 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,397] com.plivo.core.service.PubSubService: Published message msg_309 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,398] com.plivo.core.service.PubSubService: Published message msg_310 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,398] com.plivo.core.service.PubSubService: Published message msg_311 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,398] com.plivo.core.service.PubSubService: Published message msg_312 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,398] com.plivo.core.service.PubSubService: Published message msg_313 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,398] com.plivo.core.service.PubSubService: Published message msg_314 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,399] com.plivo.core.service.PubSubService: Published message msg_315 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,399] com.plivo.core.service.PubSubService: Published message msg_316 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,399] com.plivo.core.service.PubSubService: Published message msg_317 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,399] com.plivo.core.service.PubSubService: Published message msg_318 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,399] com.plivo.core.service.PubSubService: Published message msg_319 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,399] com.plivo.core.service.PubSubService: Published message msg_320 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,400] com.plivo.core.service.PubSubService: Published message msg_321 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,400] com.plivo.core.service.PubSubService: Published message msg_322 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,400] com.plivo.core.service.PubSubService: Published message msg_323 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,400] com.plivo.core.service.PubSubService: Published message msg_324 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,400] com.plivo.core.service.PubSubService: Published message msg_325 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,400] com.plivo.core.service.PubSubService: Published message msg_326 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,401] com.plivo.core.service.PubSubService: Published message msg_327 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,401] com.plivo.core.service.PubSubService: Published message msg_328 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,401] com.plivo.core.service.PubSubService: Published message msg_329 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,401] com.plivo.core.service.PubSubService: Published message msg_330 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,401] com.plivo.core.service.PubSubService: Published message msg_331 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,401] com.plivo.core.service.PubSubService: Published message msg_332 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,402] com.plivo.core.service.PubSubService: Published message msg_333 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,402] com.plivo.core.service.PubSubService: Published message msg_334 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,402] com.plivo.core.service.PubSubService: Published message msg_335 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,402] com.plivo.core.service.PubSubService: Published message msg_336 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,402] com.plivo.core.service.PubSubService: Published message msg_337 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,403] com.plivo.core.service.PubSubService: Published message msg_338 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,403] com.plivo.core.service.PubSubService: Published message msg_339 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,403] com.plivo.core.service.PubSubService: Published message msg_340 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,403] com.plivo.core.service.PubSubService: Published message msg_341 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,403] com.plivo.core.service.PubSubService: Published message msg_342 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,403] com.plivo.core.service.PubSubService: Published message msg_343 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,404] com.plivo.core.service.PubSubService: Published message msg_344 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,404] com.plivo.core.service.PubSubService: Published message msg_345 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,404] com.plivo.core.service.PubSubService: Published message msg_346 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,404] com.plivo.core.service.PubSubService: Published message msg_347 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,404] com.plivo.core.service.PubSubService: Published message msg_348 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,404] com.plivo.core.service.PubSubService: Published message msg_349 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,405] com.plivo.core.service.PubSubService: Published message msg_350 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,405] com.plivo.core.service.PubSubService: Published message msg_351 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,405] com.plivo.core.service.PubSubService: Published message msg_352 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,405] com.plivo.core.service.PubSubService: Published message msg_353 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,405] com.plivo.core.service.PubSubService: Published message msg_354 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,405] com.plivo.core.service.PubSubService: Published message msg_355 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,406] com.plivo.core.service.PubSubService: Published message msg_356 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,406] com.plivo.core.service.PubSubService: Published message msg_357 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,406] com.plivo.core.service.PubSubService: Published message msg_358 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,406] com.plivo.core.service.PubSubService: Published message msg_359 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,406] com.plivo.core.service.PubSubService: Published message msg_360 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,407] com.plivo.core.service.PubSubService: Published message msg_361 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,407] com.plivo.core.service.PubSubService: Published message msg_362 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,407] com.plivo.core.service.PubSubService: Published message msg_363 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,407] com.plivo.core.service.PubSubService: Published message msg_364 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,407] com.plivo.core.service.PubSubService: Published message msg_365 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,407] com.plivo.core.service.PubSubService: Published message msg_366 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,408] com.plivo.core.service.PubSubService: Published message msg_367 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,408] com.plivo.core.service.PubSubService: Published message msg_368 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,408] com.plivo.core.service.PubSubService: Published message msg_369 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,408] com.plivo.core.service.PubSubService: Published message msg_370 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,408] com.plivo.core.service.PubSubService: Published message msg_371 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,408] com.plivo.core.service.PubSubService: Published message msg_372 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,409] com.plivo.core.service.PubSubService: Published message msg_373 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,409] com.plivo.core.service.PubSubService: Published message msg_374 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,409] com.plivo.core.service.PubSubService: Published message msg_375 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,409] com.plivo.core.service.PubSubService: Published message msg_376 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,409] com.plivo.core.service.PubSubService: Published message msg_377 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,410] com.plivo.core.service.PubSubService: Published message msg_378 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,410] com.plivo.core.service.PubSubService: Published message msg_379 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,410] com.plivo.core.service.PubSubService: Published message msg_380 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,410] com.plivo.core.service.PubSubService: Published message msg_381 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,410] com.plivo.core.service.PubSubService: Published message msg_382 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,410] com.plivo.core.service.PubSubService: Published message msg_383 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,411] com.plivo.core.service.PubSubService: Published message msg_384 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,411] com.plivo.core.service.PubSubService: Published message msg_385 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,411] com.plivo.core.service.PubSubService: Published message msg_386 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,411] com.plivo.core.service.PubSubService: Published message msg_387 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,411] com.plivo.core.service.PubSubService: Published message msg_388 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,411] com.plivo.core.service.PubSubService: Published message msg_389 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,412] com.plivo.core.service.PubSubService: Published message msg_390 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,412] com.plivo.core.service.PubSubService: Published message msg_391 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,412] com.plivo.core.service.PubSubService: Published message msg_392 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,412] com.plivo.core.service.PubSubService: Published message msg_393 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,412] com.plivo.core.service.PubSubService: Published message msg_394 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,412] com.plivo.core.service.PubSubService: Published message msg_395 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,413] com.plivo.core.service.PubSubService: Published message msg_396 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,413] com.plivo.core.service.PubSubService: Published message msg_397 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,413] com.plivo.core.service.PubSubService: Published message msg_398 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,413] com.plivo.core.service.PubSubService: Published message msg_399 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,413] com.plivo.core.service.PubSubService: Published message msg_400 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,413] com.plivo.core.service.PubSubService: Published message msg_401 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,413] com.plivo.core.service.PubSubService: Published message msg_402 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,414] com.plivo.core.service.PubSubService: Published message msg_403 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,414] com.plivo.core.service.PubSubService: Published message msg_404 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,414] com.plivo.core.service.PubSubService: Published message msg_405 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,414] com.plivo.core.service.PubSubService: Published message msg_406 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,414] com.plivo.core.service.PubSubService: Published message msg_407 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,414] com.plivo.core.service.PubSubService: Published message msg_408 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,415] com.plivo.core.service.PubSubService: Published message msg_409 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,415] com.plivo.core.service.PubSubService: Published message msg_410 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,415] com.plivo.core.service.PubSubService: Published message msg_411 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,415] com.plivo.core.service.PubSubService: Published message msg_412 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,415] com.plivo.core.service.PubSubService: Published message msg_413 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,415] com.plivo.core.service.PubSubService: Published message msg_414 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,416] com.plivo.core.service.PubSubService: Published message msg_415 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,416] com.plivo.core.service.PubSubService: Published message msg_416 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,416] com.plivo.core.service.PubSubService: Published message msg_417 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,416] com.plivo.core.service.PubSubService: Published message msg_418 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,416] com.plivo.core.service.PubSubService: Published message msg_419 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,416] com.plivo.core.service.PubSubService: Published message msg_420 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,416] com.plivo.core.service.PubSubService: Published message msg_421 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,417] com.plivo.core.service.PubSubService: Published message msg_422 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,417] com.plivo.core.service.PubSubService: Published message msg_423 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,417] com.plivo.core.service.PubSubService: Published message msg_424 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,417] com.plivo.core.service.PubSubService: Published message msg_425 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,417] com.plivo.core.service.PubSubService: Published message msg_426 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,417] com.plivo.core.service.PubSubService: Published message msg_427 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,417] com.plivo.core.service.PubSubService: Published message msg_428 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,418] com.plivo.core.service.PubSubService: Published message msg_429 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,418] com.plivo.core.service.PubSubService: Published message msg_430 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,418] com.plivo.core.service.PubSubService: Published message msg_431 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,418] com.plivo.core.service.PubSubService: Published message msg_432 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,418] com.plivo.core.service.PubSubService: Published message msg_433 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,418] com.plivo.core.service.PubSubService: Published message msg_434 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,419] com.plivo.core.service.PubSubService: Published message msg_435 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,419] com.plivo.core.service.PubSubService: Published message msg_436 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,419] com.plivo.core.service.PubSubService: Published message msg_437 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,419] com.plivo.core.service.PubSubService: Published message msg_438 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,419] com.plivo.core.service.PubSubService: Published message msg_439 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,419] com.plivo.core.service.PubSubService: Published message msg_440 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,420] com.plivo.core.service.PubSubService: Published message msg_441 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,420] com.plivo.core.service.PubSubService: Published message msg_442 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,420] com.plivo.core.service.PubSubService: Published message msg_443 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,420] com.plivo.core.service.PubSubService: Published message msg_444 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,420] com.plivo.core.service.PubSubService: Published message msg_445 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,420] com.plivo.core.service.PubSubService: Published message msg_446 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,421] com.plivo.core.service.PubSubService: Published message msg_447 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,421] com.plivo.core.service.PubSubService: Published message msg_448 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,421] com.plivo.core.service.PubSubService: Published message msg_449 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,421] com.plivo.core.service.PubSubService: Published message msg_450 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,421] com.plivo.core.service.PubSubService: Published message msg_451 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,421] com.plivo.core.service.PubSubService: Published message msg_452 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,421] com.plivo.core.service.PubSubService: Published message msg_453 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,422] com.plivo.core.service.PubSubService: Published message msg_454 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,422] com.plivo.core.service.PubSubService: Published message msg_455 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,422] com.plivo.core.service.PubSubService: Published message msg_456 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,422] com.plivo.core.service.PubSubService: Published message msg_457 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,422] com.plivo.core.service.PubSubService: Published message msg_458 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,422] com.plivo.core.service.PubSubService: Published message msg_459 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,423] com.plivo.core.service.PubSubService: Published message msg_460 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,423] com.plivo.core.service.PubSubService: Published message msg_461 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,423] com.plivo.core.service.PubSubService: Published message msg_462 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,423] com.plivo.core.service.PubSubService: Published message msg_463 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,423] com.plivo.core.service.PubSubService: Published message msg_464 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,423] com.plivo.core.service.PubSubService: Published message msg_465 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,424] com.plivo.core.service.PubSubService: Published message msg_466 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,424] com.plivo.core.service.PubSubService: Published message msg_467 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,424] com.plivo.core.service.PubSubService: Published message msg_468 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,424] com.plivo.core.service.PubSubService: Published message msg_469 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,424] com.plivo.core.service.PubSubService: Published message msg_470 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,424] com.plivo.core.service.PubSubService: Published message msg_471 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,425] com.plivo.core.service.PubSubService: Published message msg_472 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,425] com.plivo.core.service.PubSubService: Published message msg_473 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,425] com.plivo.core.service.PubSubService: Published message msg_474 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,425] com.plivo.core.service.PubSubService: Published message msg_475 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,425] com.plivo.core.service.PubSubService: Published message msg_476 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,425] com.plivo.core.service.PubSubService: Published message msg_477 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,426] com.plivo.core.service.PubSubService: Published message msg_478 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,426] com.plivo.core.service.PubSubService: Published message msg_479 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,426] com.plivo.core.service.PubSubService: Published message msg_480 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,426] com.plivo.core.service.PubSubService: Published message msg_481 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,426] com.plivo.core.service.PubSubService: Published message msg_482 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,426] com.plivo.core.service.PubSubService: Published message msg_483 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,427] com.plivo.core.service.PubSubService: Published message msg_484 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,427] com.plivo.core.service.PubSubService: Published message msg_485 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,427] com.plivo.core.service.PubSubService: Published message msg_486 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,427] com.plivo.core.service.PubSubService: Published message msg_487 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,427] com.plivo.core.service.PubSubService: Published message msg_488 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,428] com.plivo.core.service.PubSubService: Published message msg_489 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,428] com.plivo.core.service.PubSubService: Published message msg_490 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,428] com.plivo.core.service.PubSubService: Published message msg_491 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,428] com.plivo.core.service.PubSubService: Published message msg_492 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,428] com.plivo.core.service.PubSubService: Published message msg_493 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,428] com.plivo.core.service.PubSubService: Published message msg_494 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,429] com.plivo.core.service.PubSubService: Published message msg_495 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,429] com.plivo.core.service.PubSubService: Published message msg_496 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,429] com.plivo.core.service.PubSubService: Published message msg_497 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,429] com.plivo.core.service.PubSubService: Published message msg_498 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,429] com.plivo.core.service.PubSubService: Published message msg_499 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,429] com.plivo.core.service.PubSubService: Published message msg_500 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,429] com.plivo.core.service.PubSubService: Published message msg_501 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,430] com.plivo.core.service.PubSubService: Published message msg_502 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,430] com.plivo.core.service.PubSubService: Published message msg_503 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,430] com.plivo.core.service.PubSubService: Published message msg_504 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,430] com.plivo.core.service.PubSubService: Published message msg_505 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,430] com.plivo.core.service.PubSubService: Published message msg_506 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,431] com.plivo.core.service.PubSubService: Published message msg_507 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,431] com.plivo.core.service.PubSubService: Published message msg_508 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,431] com.plivo.core.service.PubSubService: Published message msg_509 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,431] com.plivo.core.service.PubSubService: Published message msg_510 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,431] com.plivo.core.service.PubSubService: Published message msg_511 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,431] com.plivo.core.service.PubSubService: Published message msg_512 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,432] com.plivo.core.service.PubSubService: Published message msg_513 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,432] com.plivo.core.service.PubSubService: Published message msg_514 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,432] com.plivo.core.service.PubSubService: Published message msg_515 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,432] com.plivo.core.service.PubSubService: Published message msg_516 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,432] com.plivo.core.service.PubSubService: Published message msg_517 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,432] com.plivo.core.service.PubSubService: Published message msg_518 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,432] com.plivo.core.service.PubSubService: Published message msg_519 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,433] com.plivo.core.service.PubSubService: Published message msg_520 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,433] com.plivo.core.service.PubSubService: Published message msg_521 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,433] com.plivo.core.service.PubSubService: Published message msg_522 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,433] com.plivo.core.service.PubSubService: Published message msg_523 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,433] com.plivo.core.service.PubSubService: Published message msg_524 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,433] com.plivo.core.service.PubSubService: Published message msg_525 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,433] com.plivo.core.service.PubSubService: Published message msg_526 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,434] com.plivo.core.service.PubSubService: Published message msg_527 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,434] com.plivo.core.service.PubSubService: Published message msg_528 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,434] com.plivo.core.service.PubSubService: Published message msg_529 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,434] com.plivo.core.service.PubSubService: Published message msg_530 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,434] com.plivo.core.service.PubSubService: Published message msg_531 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,434] com.plivo.core.service.PubSubService: Published message msg_532 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,434] com.plivo.core.service.PubSubService: Published message msg_533 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,435] com.plivo.core.service.PubSubService: Published message msg_534 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,435] com.plivo.core.service.PubSubService: Published message msg_535 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,435] com.plivo.core.service.PubSubService: Published message msg_536 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,435] com.plivo.core.service.PubSubService: Published message msg_537 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,435] com.plivo.core.service.PubSubService: Published message msg_538 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,435] com.plivo.core.service.PubSubService: Published message msg_539 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,436] com.plivo.core.service.PubSubService: Published message msg_540 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,436] com.plivo.core.service.PubSubService: Published message msg_541 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,436] com.plivo.core.service.PubSubService: Published message msg_542 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,436] com.plivo.core.service.PubSubService: Published message msg_543 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,436] com.plivo.core.service.PubSubService: Published message msg_544 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,436] com.plivo.core.service.PubSubService: Published message msg_545 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,436] com.plivo.core.service.PubSubService: Published message msg_546 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,437] com.plivo.core.service.PubSubService: Published message msg_547 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,437] com.plivo.core.service.PubSubService: Published message msg_548 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,437] com.plivo.core.service.PubSubService: Published message msg_549 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,437] com.plivo.core.service.PubSubService: Published message msg_550 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,437] com.plivo.core.service.PubSubService: Published message msg_551 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,437] com.plivo.core.service.PubSubService: Published message msg_552 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,437] com.plivo.core.service.PubSubService: Published message msg_553 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,437] com.plivo.core.service.PubSubService: Published message msg_554 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,437] com.plivo.core.service.PubSubService: Published message msg_555 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,438] com.plivo.core.service.PubSubService: Published message msg_556 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,438] com.plivo.core.service.PubSubService: Published message msg_557 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,438] com.plivo.core.service.PubSubService: Published message msg_558 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,438] com.plivo.core.service.PubSubService: Published message msg_559 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,438] com.plivo.core.service.PubSubService: Published message msg_560 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,438] com.plivo.core.service.PubSubService: Published message msg_561 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,438] com.plivo.core.service.PubSubService: Published message msg_562 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,439] com.plivo.core.service.PubSubService: Published message msg_563 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,439] com.plivo.core.service.PubSubService: Published message msg_564 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,439] com.plivo.core.service.PubSubService: Published message msg_565 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,439] com.plivo.core.service.PubSubService: Published message msg_566 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,439] com.plivo.core.service.PubSubService: Published message msg_567 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,439] com.plivo.core.service.PubSubService: Published message msg_568 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,440] com.plivo.core.service.PubSubService: Published message msg_569 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,440] com.plivo.core.service.PubSubService: Published message msg_570 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,440] com.plivo.core.service.PubSubService: Published message msg_571 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,440] com.plivo.core.service.PubSubService: Published message msg_572 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,440] com.plivo.core.service.PubSubService: Published message msg_573 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,440] com.plivo.core.service.PubSubService: Published message msg_574 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,440] com.plivo.core.service.PubSubService: Published message msg_575 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,440] com.plivo.core.service.PubSubService: Published message msg_576 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,441] com.plivo.core.service.PubSubService: Published message msg_577 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,441] com.plivo.core.service.PubSubService: Published message msg_578 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,441] com.plivo.core.service.PubSubService: Published message msg_579 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,441] com.plivo.core.service.PubSubService: Published message msg_580 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,441] com.plivo.core.service.PubSubService: Published message msg_581 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,441] com.plivo.core.service.PubSubService: Published message msg_582 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,441] com.plivo.core.service.PubSubService: Published message msg_583 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,442] com.plivo.core.service.PubSubService: Published message msg_584 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,442] com.plivo.core.service.PubSubService: Published message msg_585 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,442] com.plivo.core.service.PubSubService: Published message msg_586 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,442] com.plivo.core.service.PubSubService: Published message msg_587 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,442] com.plivo.core.service.PubSubService: Published message msg_588 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,442] com.plivo.core.service.PubSubService: Published message msg_589 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,442] com.plivo.core.service.PubSubService: Published message msg_590 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,443] com.plivo.core.service.PubSubService: Published message msg_591 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,443] com.plivo.core.service.PubSubService: Published message msg_592 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,443] com.plivo.core.service.PubSubService: Published message msg_593 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,443] com.plivo.core.service.PubSubService: Published message msg_594 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,443] com.plivo.core.service.PubSubService: Published message msg_595 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,443] com.plivo.core.service.PubSubService: Published message msg_596 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,443] com.plivo.core.service.PubSubService: Published message msg_597 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,444] com.plivo.core.service.PubSubService: Published message msg_598 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,444] com.plivo.core.service.PubSubService: Published message msg_599 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,444] com.plivo.core.service.PubSubService: Published message msg_600 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,444] com.plivo.core.service.PubSubService: Published message msg_601 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,444] com.plivo.core.service.PubSubService: Published message msg_602 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,444] com.plivo.core.service.PubSubService: Published message msg_603 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,445] com.plivo.core.service.PubSubService: Published message msg_604 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,445] com.plivo.core.service.PubSubService: Published message msg_605 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,445] com.plivo.core.service.PubSubService: Published message msg_606 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,445] com.plivo.core.service.PubSubService: Published message msg_607 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,445] com.plivo.core.service.PubSubService: Published message msg_608 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,445] com.plivo.core.service.PubSubService: Published message msg_609 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,445] com.plivo.core.service.PubSubService: Published message msg_610 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,446] com.plivo.core.service.PubSubService: Published message msg_611 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,446] com.plivo.core.service.PubSubService: Published message msg_612 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,446] com.plivo.core.service.PubSubService: Published message msg_613 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,446] com.plivo.core.service.PubSubService: Published message msg_614 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,446] com.plivo.core.service.PubSubService: Published message msg_615 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,446] com.plivo.core.service.PubSubService: Published message msg_616 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,446] com.plivo.core.service.PubSubService: Published message msg_617 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,447] com.plivo.core.service.PubSubService: Published message msg_618 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,447] com.plivo.core.service.PubSubService: Published message msg_619 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,447] com.plivo.core.service.PubSubService: Published message msg_620 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,447] com.plivo.core.service.PubSubService: Published message msg_621 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,447] com.plivo.core.service.PubSubService: Published message msg_622 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,447] com.plivo.core.service.PubSubService: Published message msg_623 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,447] com.plivo.core.service.PubSubService: Published message msg_624 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,448] com.plivo.core.service.PubSubService: Published message msg_625 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,448] com.plivo.core.service.PubSubService: Published message msg_626 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,448] com.plivo.core.service.PubSubService: Published message msg_627 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,448] com.plivo.core.service.PubSubService: Published message msg_628 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,448] com.plivo.core.service.PubSubService: Published message msg_629 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,448] com.plivo.core.service.PubSubService: Published message msg_630 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,448] com.plivo.core.service.PubSubService: Published message msg_631 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,449] com.plivo.core.service.PubSubService: Published message msg_632 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,449] com.plivo.core.service.PubSubService: Published message msg_633 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,449] com.plivo.core.service.PubSubService: Published message msg_634 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,449] com.plivo.core.service.PubSubService: Published message msg_635 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,449] com.plivo.core.service.PubSubService: Published message msg_636 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,449] com.plivo.core.service.PubSubService: Published message msg_637 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,449] com.plivo.core.service.PubSubService: Published message msg_638 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,450] com.plivo.core.service.PubSubService: Published message msg_639 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,450] com.plivo.core.service.PubSubService: Published message msg_640 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,450] com.plivo.core.service.PubSubService: Published message msg_641 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,450] com.plivo.core.service.PubSubService: Published message msg_642 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,450] com.plivo.core.service.PubSubService: Published message msg_643 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,450] com.plivo.core.service.PubSubService: Published message msg_644 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,450] com.plivo.core.service.PubSubService: Published message msg_645 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,451] com.plivo.core.service.PubSubService: Published message msg_646 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,451] com.plivo.core.service.PubSubService: Published message msg_647 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,451] com.plivo.core.service.PubSubService: Published message msg_648 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,451] com.plivo.core.service.PubSubService: Published message msg_649 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,451] com.plivo.core.service.PubSubService: Published message msg_650 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,451] com.plivo.core.service.PubSubService: Published message msg_651 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,451] com.plivo.core.service.PubSubService: Published message msg_652 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,452] com.plivo.core.service.PubSubService: Published message msg_653 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,452] com.plivo.core.service.PubSubService: Published message msg_654 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,452] com.plivo.core.service.PubSubService: Published message msg_655 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,452] com.plivo.core.service.PubSubService: Published message msg_656 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,452] com.plivo.core.service.PubSubService: Published message msg_657 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,452] com.plivo.core.service.PubSubService: Published message msg_658 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,452] com.plivo.core.service.PubSubService: Published message msg_659 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,453] com.plivo.core.service.PubSubService: Published message msg_660 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,453] com.plivo.core.service.PubSubService: Published message msg_661 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,453] com.plivo.core.service.PubSubService: Published message msg_662 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,453] com.plivo.core.service.PubSubService: Published message msg_663 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,453] com.plivo.core.service.PubSubService: Published message msg_664 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,453] com.plivo.core.service.PubSubService: Published message msg_665 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,453] com.plivo.core.service.PubSubService: Published message msg_666 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,453] com.plivo.core.service.PubSubService: Published message msg_667 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,454] com.plivo.core.service.PubSubService: Published message msg_668 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,454] com.plivo.core.service.PubSubService: Published message msg_669 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,454] com.plivo.core.service.PubSubService: Published message msg_670 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,454] com.plivo.core.service.PubSubService: Published message msg_671 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,454] com.plivo.core.service.PubSubService: Published message msg_672 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,454] com.plivo.core.service.PubSubService: Published message msg_673 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,454] com.plivo.core.service.PubSubService: Published message msg_674 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,455] com.plivo.core.service.PubSubService: Published message msg_675 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,455] com.plivo.core.service.PubSubService: Published message msg_676 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,455] com.plivo.core.service.PubSubService: Published message msg_677 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,455] com.plivo.core.service.PubSubService: Published message msg_678 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,455] com.plivo.core.service.PubSubService: Published message msg_679 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,455] com.plivo.core.service.PubSubService: Published message msg_680 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,455] com.plivo.core.service.PubSubService: Published message msg_681 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,456] com.plivo.core.service.PubSubService: Published message msg_682 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,456] com.plivo.core.service.PubSubService: Published message msg_683 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,456] com.plivo.core.service.PubSubService: Published message msg_684 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,456] com.plivo.core.service.PubSubService: Published message msg_685 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,456] com.plivo.core.service.PubSubService: Published message msg_686 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,456] com.plivo.core.service.PubSubService: Published message msg_687 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,456] com.plivo.core.service.PubSubService: Published message msg_688 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,457] com.plivo.core.service.PubSubService: Published message msg_689 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,457] com.plivo.core.service.PubSubService: Published message msg_690 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,457] com.plivo.core.service.PubSubService: Published message msg_691 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,457] com.plivo.core.service.PubSubService: Published message msg_692 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,457] com.plivo.core.service.PubSubService: Published message msg_693 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,457] com.plivo.core.service.PubSubService: Published message msg_694 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,457] com.plivo.core.service.PubSubService: Published message msg_695 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,457] com.plivo.core.service.PubSubService: Published message msg_696 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,458] com.plivo.core.service.PubSubService: Published message msg_697 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,458] com.plivo.core.service.PubSubService: Published message msg_698 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,458] com.plivo.core.service.PubSubService: Published message msg_699 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,458] com.plivo.core.service.PubSubService: Published message msg_700 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,458] com.plivo.core.service.PubSubService: Published message msg_701 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,458] com.plivo.core.service.PubSubService: Published message msg_702 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,458] com.plivo.core.service.PubSubService: Published message msg_703 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,459] com.plivo.core.service.PubSubService: Published message msg_704 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,459] com.plivo.core.service.PubSubService: Published message msg_705 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,459] com.plivo.core.service.PubSubService: Published message msg_706 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,459] com.plivo.core.service.PubSubService: Published message msg_707 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,459] com.plivo.core.service.PubSubService: Published message msg_708 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,459] com.plivo.core.service.PubSubService: Published message msg_709 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,459] com.plivo.core.service.PubSubService: Published message msg_710 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,460] com.plivo.core.service.PubSubService: Published message msg_711 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,460] com.plivo.core.service.PubSubService: Published message msg_712 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,460] com.plivo.core.service.PubSubService: Published message msg_713 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,460] com.plivo.core.service.PubSubService: Published message msg_714 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,460] com.plivo.core.service.PubSubService: Published message msg_715 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,460] com.plivo.core.service.PubSubService: Published message msg_716 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,460] com.plivo.core.service.PubSubService: Published message msg_717 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,460] com.plivo.core.service.PubSubService: Published message msg_718 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,461] com.plivo.core.service.PubSubService: Published message msg_719 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,461] com.plivo.core.service.PubSubService: Published message msg_720 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,461] com.plivo.core.service.PubSubService: Published message msg_721 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,461] com.plivo.core.service.PubSubService: Published message msg_722 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,461] com.plivo.core.service.PubSubService: Published message msg_723 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,461] com.plivo.core.service.PubSubService: Published message msg_724 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,461] com.plivo.core.service.PubSubService: Published message msg_725 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,462] com.plivo.core.service.PubSubService: Published message msg_726 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,462] com.plivo.core.service.PubSubService: Published message msg_727 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,462] com.plivo.core.service.PubSubService: Published message msg_728 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,462] com.plivo.core.service.PubSubService: Published message msg_729 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,462] com.plivo.core.service.PubSubService: Published message msg_730 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,462] com.plivo.core.service.PubSubService: Published message msg_731 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,462] com.plivo.core.service.PubSubService: Published message msg_732 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,463] com.plivo.core.service.PubSubService: Published message msg_733 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,463] com.plivo.core.service.PubSubService: Published message msg_734 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,463] com.plivo.core.service.PubSubService: Published message msg_735 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,463] com.plivo.core.service.PubSubService: Published message msg_736 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,463] com.plivo.core.service.PubSubService: Published message msg_737 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,463] com.plivo.core.service.PubSubService: Published message msg_738 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,463] com.plivo.core.service.PubSubService: Published message msg_739 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,463] com.plivo.core.service.PubSubService: Published message msg_740 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,464] com.plivo.core.service.PubSubService: Published message msg_741 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,464] com.plivo.core.service.PubSubService: Published message msg_742 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,464] com.plivo.core.service.PubSubService: Published message msg_743 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,464] com.plivo.core.service.PubSubService: Published message msg_744 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,464] com.plivo.core.service.PubSubService: Published message msg_745 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,464] com.plivo.core.service.PubSubService: Published message msg_746 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,464] com.plivo.core.service.PubSubService: Published message msg_747 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,465] com.plivo.core.service.PubSubService: Published message msg_748 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,465] com.plivo.core.service.PubSubService: Published message msg_749 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,465] com.plivo.core.service.PubSubService: Published message msg_750 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,465] com.plivo.core.service.PubSubService: Published message msg_751 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,465] com.plivo.core.service.PubSubService: Published message msg_752 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,465] com.plivo.core.service.PubSubService: Published message msg_753 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,466] com.plivo.core.service.PubSubService: Published message msg_754 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,466] com.plivo.core.service.PubSubService: Published message msg_755 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,466] com.plivo.core.service.PubSubService: Published message msg_756 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,466] com.plivo.core.service.PubSubService: Published message msg_757 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,466] com.plivo.core.service.PubSubService: Published message msg_758 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,466] com.plivo.core.service.PubSubService: Published message msg_759 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,466] com.plivo.core.service.PubSubService: Published message msg_760 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,466] com.plivo.core.service.PubSubService: Published message msg_761 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,467] com.plivo.core.service.PubSubService: Published message msg_762 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,467] com.plivo.core.service.PubSubService: Published message msg_763 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,467] com.plivo.core.service.PubSubService: Published message msg_764 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,467] com.plivo.core.service.PubSubService: Published message msg_765 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,467] com.plivo.core.service.PubSubService: Published message msg_766 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,467] com.plivo.core.service.PubSubService: Published message msg_767 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,467] com.plivo.core.service.PubSubService: Published message msg_768 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,467] com.plivo.core.service.PubSubService: Published message msg_769 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,468] com.plivo.core.service.PubSubService: Published message msg_770 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,468] com.plivo.core.service.PubSubService: Published message msg_771 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,468] com.plivo.core.service.PubSubService: Published message msg_772 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,468] com.plivo.core.service.PubSubService: Published message msg_773 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,468] com.plivo.core.service.PubSubService: Published message msg_774 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,468] com.plivo.core.service.PubSubService: Published message msg_775 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,468] com.plivo.core.service.PubSubService: Published message msg_776 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,469] com.plivo.core.service.PubSubService: Published message msg_777 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,469] com.plivo.core.service.PubSubService: Published message msg_778 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,469] com.plivo.core.service.PubSubService: Published message msg_779 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,469] com.plivo.core.service.PubSubService: Published message msg_780 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,469] com.plivo.core.service.PubSubService: Published message msg_781 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,469] com.plivo.core.service.PubSubService: Published message msg_782 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,469] com.plivo.core.service.PubSubService: Published message msg_783 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,470] com.plivo.core.service.PubSubService: Published message msg_784 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,470] com.plivo.core.service.PubSubService: Published message msg_785 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,470] com.plivo.core.service.PubSubService: Published message msg_786 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,470] com.plivo.core.service.PubSubService: Published message msg_787 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,470] com.plivo.core.service.PubSubService: Published message msg_788 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,470] com.plivo.core.service.PubSubService: Published message msg_789 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,470] com.plivo.core.service.PubSubService: Published message msg_790 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,470] com.plivo.core.service.PubSubService: Published message msg_791 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,471] com.plivo.core.service.PubSubService: Published message msg_792 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,471] com.plivo.core.service.PubSubService: Published message msg_793 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,471] com.plivo.core.service.PubSubService: Published message msg_794 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,471] com.plivo.core.service.PubSubService: Published message msg_795 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,471] com.plivo.core.service.PubSubService: Published message msg_796 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,471] com.plivo.core.service.PubSubService: Published message msg_797 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,471] com.plivo.core.service.PubSubService: Published message msg_798 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,471] com.plivo.core.service.PubSubService: Published message msg_799 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,472] com.plivo.core.service.PubSubService: Published message msg_800 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,472] com.plivo.core.service.PubSubService: Published message msg_801 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,472] com.plivo.core.service.PubSubService: Published message msg_802 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,472] com.plivo.core.service.PubSubService: Published message msg_803 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,472] com.plivo.core.service.PubSubService: Published message msg_804 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,472] com.plivo.core.service.PubSubService: Published message msg_805 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,473] com.plivo.core.service.PubSubService: Published message msg_806 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,473] com.plivo.core.service.PubSubService: Published message msg_807 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,473] com.plivo.core.service.PubSubService: Published message msg_808 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,473] com.plivo.core.service.PubSubService: Published message msg_809 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,473] com.plivo.core.service.PubSubService: Published message msg_810 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,473] com.plivo.core.service.PubSubService: Published message msg_811 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,473] com.plivo.core.service.PubSubService: Published message msg_812 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,473] com.plivo.core.service.PubSubService: Published message msg_813 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,474] com.plivo.core.service.PubSubService: Published message msg_814 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,474] com.plivo.core.service.PubSubService: Published message msg_815 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,474] com.plivo.core.service.PubSubService: Published message msg_816 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,474] com.plivo.core.service.PubSubService: Published message msg_817 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,474] com.plivo.core.service.PubSubService: Published message msg_818 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,474] com.plivo.core.service.PubSubService: Published message msg_819 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,474] com.plivo.core.service.PubSubService: Published message msg_820 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,474] com.plivo.core.service.PubSubService: Published message msg_821 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,475] com.plivo.core.service.PubSubService: Published message msg_822 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,475] com.plivo.core.service.PubSubService: Published message msg_823 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,475] com.plivo.core.service.PubSubService: Published message msg_824 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,475] com.plivo.core.service.PubSubService: Published message msg_825 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,475] com.plivo.core.service.PubSubService: Published message msg_826 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,475] com.plivo.core.service.PubSubService: Published message msg_827 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,475] com.plivo.core.service.PubSubService: Published message msg_828 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,475] com.plivo.core.service.PubSubService: Published message msg_829 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,476] com.plivo.core.service.PubSubService: Published message msg_830 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,476] com.plivo.core.service.PubSubService: Published message msg_831 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,476] com.plivo.core.service.PubSubService: Published message msg_832 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,476] com.plivo.core.service.PubSubService: Published message msg_833 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,476] com.plivo.core.service.PubSubService: Published message msg_834 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,476] com.plivo.core.service.PubSubService: Published message msg_835 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,476] com.plivo.core.service.PubSubService: Published message msg_836 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,476] com.plivo.core.service.PubSubService: Published message msg_837 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,477] com.plivo.core.service.PubSubService: Published message msg_838 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,477] com.plivo.core.service.PubSubService: Published message msg_839 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,477] com.plivo.core.service.PubSubService: Published message msg_840 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,477] com.plivo.core.service.PubSubService: Published message msg_841 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,477] com.plivo.core.service.PubSubService: Published message msg_842 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,477] com.plivo.core.service.PubSubService: Published message msg_843 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,477] com.plivo.core.service.PubSubService: Published message msg_844 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,478] com.plivo.core.service.PubSubService: Published message msg_845 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,478] com.plivo.core.service.PubSubService: Published message msg_846 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,478] com.plivo.core.service.PubSubService: Published message msg_847 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,478] com.plivo.core.service.PubSubService: Published message msg_848 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,478] com.plivo.core.service.PubSubService: Published message msg_849 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,478] com.plivo.core.service.PubSubService: Published message msg_850 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,478] com.plivo.core.service.PubSubService: Published message msg_851 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,478] com.plivo.core.service.PubSubService: Published message msg_852 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,479] com.plivo.core.service.PubSubService: Published message msg_853 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,479] com.plivo.core.service.PubSubService: Published message msg_854 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,479] com.plivo.core.service.PubSubService: Published message msg_855 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,479] com.plivo.core.service.PubSubService: Published message msg_856 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,479] com.plivo.core.service.PubSubService: Published message msg_857 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,479] com.plivo.core.service.PubSubService: Published message msg_858 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,479] com.plivo.core.service.PubSubService: Published message msg_859 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,480] com.plivo.core.service.PubSubService: Published message msg_860 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,480] com.plivo.core.service.PubSubService: Published message msg_861 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,480] com.plivo.core.service.PubSubService: Published message msg_862 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,480] com.plivo.core.service.PubSubService: Published message msg_863 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,480] com.plivo.core.service.PubSubService: Published message msg_864 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,480] com.plivo.core.service.PubSubService: Published message msg_865 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,480] com.plivo.core.service.PubSubService: Published message msg_866 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,480] com.plivo.core.service.PubSubService: Published message msg_867 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,481] com.plivo.core.service.PubSubService: Published message msg_868 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,481] com.plivo.core.service.PubSubService: Published message msg_869 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,481] com.plivo.core.service.PubSubService: Published message msg_870 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,481] com.plivo.core.service.PubSubService: Published message msg_871 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,481] com.plivo.core.service.PubSubService: Published message msg_872 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,481] com.plivo.core.service.PubSubService: Published message msg_873 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,481] com.plivo.core.service.PubSubService: Published message msg_874 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,482] com.plivo.core.service.PubSubService: Published message msg_875 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,482] com.plivo.core.service.PubSubService: Published message msg_876 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,482] com.plivo.core.service.PubSubService: Published message msg_877 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,482] com.plivo.core.service.PubSubService: Published message msg_878 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,482] com.plivo.core.service.PubSubService: Published message msg_879 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,482] com.plivo.core.service.PubSubService: Published message msg_880 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,482] com.plivo.core.service.PubSubService: Published message msg_881 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,483] com.plivo.core.service.PubSubService: Published message msg_882 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,483] com.plivo.core.service.PubSubService: Published message msg_883 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,483] com.plivo.core.service.PubSubService: Published message msg_884 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,483] com.plivo.core.service.PubSubService: Published message msg_885 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,483] com.plivo.core.service.PubSubService: Published message msg_886 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,483] com.plivo.core.service.PubSubService: Published message msg_887 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,483] com.plivo.core.service.PubSubService: Published message msg_888 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,483] com.plivo.core.service.PubSubService: Published message msg_889 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,484] com.plivo.core.service.PubSubService: Published message msg_890 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,484] com.plivo.core.service.PubSubService: Published message msg_891 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,484] com.plivo.core.service.PubSubService: Published message msg_892 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,484] com.plivo.core.service.PubSubService: Published message msg_893 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,484] com.plivo.core.service.PubSubService: Published message msg_894 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,484] com.plivo.core.service.PubSubService: Published message msg_895 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,484] com.plivo.core.service.PubSubService: Published message msg_896 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,484] com.plivo.core.service.PubSubService: Published message msg_897 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,485] com.plivo.core.service.PubSubService: Published message msg_898 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,485] com.plivo.core.service.PubSubService: Published message msg_899 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,485] com.plivo.core.service.PubSubService: Published message msg_900 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,485] com.plivo.core.service.PubSubService: Published message msg_901 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,485] com.plivo.core.service.PubSubService: Published message msg_902 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,485] com.plivo.core.service.PubSubService: Published message msg_903 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,485] com.plivo.core.service.PubSubService: Published message msg_904 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,485] com.plivo.core.service.PubSubService: Published message msg_905 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,486] com.plivo.core.service.PubSubService: Published message msg_906 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,486] com.plivo.core.service.PubSubService: Published message msg_907 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,486] com.plivo.core.service.PubSubService: Published message msg_908 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,486] com.plivo.core.service.PubSubService: Published message msg_909 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,486] com.plivo.core.service.PubSubService: Published message msg_910 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,486] com.plivo.core.service.PubSubService: Published message msg_911 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,486] com.plivo.core.service.PubSubService: Published message msg_912 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,486] com.plivo.core.service.PubSubService: Published message msg_913 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,487] com.plivo.core.service.PubSubService: Published message msg_914 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,487] com.plivo.core.service.PubSubService: Published message msg_915 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,487] com.plivo.core.service.PubSubService: Published message msg_916 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,487] com.plivo.core.service.PubSubService: Published message msg_917 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,487] com.plivo.core.service.PubSubService: Published message msg_918 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,487] com.plivo.core.service.PubSubService: Published message msg_919 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,487] com.plivo.core.service.PubSubService: Published message msg_920 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,487] com.plivo.core.service.PubSubService: Published message msg_921 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,488] com.plivo.core.service.PubSubService: Published message msg_922 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,488] com.plivo.core.service.PubSubService: Published message msg_923 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,488] com.plivo.core.service.PubSubService: Published message msg_924 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,488] com.plivo.core.service.PubSubService: Published message msg_925 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,488] com.plivo.core.service.PubSubService: Published message msg_926 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,488] com.plivo.core.service.PubSubService: Published message msg_927 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,488] com.plivo.core.service.PubSubService: Published message msg_928 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,489] com.plivo.core.service.PubSubService: Published message msg_929 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,489] com.plivo.core.service.PubSubService: Published message msg_930 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,489] com.plivo.core.service.PubSubService: Published message msg_931 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,489] com.plivo.core.service.PubSubService: Published message msg_932 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,489] com.plivo.core.service.PubSubService: Published message msg_933 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,490] com.plivo.core.service.PubSubService: Published message msg_934 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,490] com.plivo.core.service.PubSubService: Published message msg_935 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,490] com.plivo.core.service.PubSubService: Published message msg_936 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,490] com.plivo.core.service.PubSubService: Published message msg_937 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,490] com.plivo.core.service.PubSubService: Published message msg_938 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,490] com.plivo.core.service.PubSubService: Published message msg_939 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,490] com.plivo.core.service.PubSubService: Published message msg_940 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,491] com.plivo.core.service.PubSubService: Published message msg_941 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,491] com.plivo.core.service.PubSubService: Published message msg_942 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,491] com.plivo.core.service.PubSubService: Published message msg_943 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,491] com.plivo.core.service.PubSubService: Published message msg_944 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,491] com.plivo.core.service.PubSubService: Published message msg_945 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,491] com.plivo.core.service.PubSubService: Published message msg_946 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,491] com.plivo.core.service.PubSubService: Published message msg_947 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,492] com.plivo.core.service.PubSubService: Published message msg_948 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,492] com.plivo.core.service.PubSubService: Published message msg_949 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,492] com.plivo.core.service.PubSubService: Published message msg_950 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,492] com.plivo.core.service.PubSubService: Published message msg_951 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,492] com.plivo.core.service.PubSubService: Published message msg_952 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,492] com.plivo.core.service.PubSubService: Published message msg_953 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,493] com.plivo.core.service.PubSubService: Published message msg_954 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,493] com.plivo.core.service.PubSubService: Published message msg_955 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,493] com.plivo.core.service.PubSubService: Published message msg_956 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,493] com.plivo.core.service.PubSubService: Published message msg_957 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,493] com.plivo.core.service.PubSubService: Published message msg_958 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,493] com.plivo.core.service.PubSubService: Published message msg_959 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,494] com.plivo.core.service.PubSubService: Published message msg_960 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,494] com.plivo.core.service.PubSubService: Published message msg_961 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,494] com.plivo.core.service.PubSubService: Published message msg_962 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,494] com.plivo.core.service.PubSubService: Published message msg_963 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,494] com.plivo.core.service.PubSubService: Published message msg_964 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,494] com.plivo.core.service.PubSubService: Published message msg_965 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,494] com.plivo.core.service.PubSubService: Published message msg_966 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,495] com.plivo.core.service.PubSubService: Published message msg_967 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,495] com.plivo.core.service.PubSubService: Published message msg_968 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,495] com.plivo.core.service.PubSubService: Published message msg_969 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,495] com.plivo.core.service.PubSubService: Published message msg_970 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,495] com.plivo.core.service.PubSubService: Published message msg_971 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,495] com.plivo.core.service.PubSubService: Published message msg_972 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,495] com.plivo.core.service.PubSubService: Published message msg_973 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,496] com.plivo.core.service.PubSubService: Published message msg_974 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,496] com.plivo.core.service.PubSubService: Published message msg_975 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,496] com.plivo.core.service.PubSubService: Published message msg_976 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,496] com.plivo.core.service.PubSubService: Published message msg_977 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,496] com.plivo.core.service.PubSubService: Published message msg_978 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,496] com.plivo.core.service.PubSubService: Published message msg_979 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,496] com.plivo.core.service.PubSubService: Published message msg_980 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,496] com.plivo.core.service.PubSubService: Published message msg_981 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,497] com.plivo.core.service.PubSubService: Published message msg_982 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,497] com.plivo.core.service.PubSubService: Published message msg_983 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,497] com.plivo.core.service.PubSubService: Published message msg_984 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,497] com.plivo.core.service.PubSubService: Published message msg_985 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,497] com.plivo.core.service.PubSubService: Published message msg_986 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,497] com.plivo.core.service.PubSubService: Published message msg_987 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,497] com.plivo.core.service.PubSubService: Published message msg_988 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,498] com.plivo.core.service.PubSubService: Published message msg_989 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,498] com.plivo.core.service.PubSubService: Published message msg_990 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,498] com.plivo.core.service.PubSubService: Published message msg_991 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,498] com.plivo.core.service.PubSubService: Published message msg_992 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,498] com.plivo.core.service.PubSubService: Published message msg_993 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,498] com.plivo.core.service.PubSubService: Published message msg_994 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,498] com.plivo.core.service.PubSubService: Published message msg_995 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,499] com.plivo.core.service.PubSubService: Published message msg_996 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,499] com.plivo.core.service.PubSubService: Published message msg_997 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,499] com.plivo.core.service.PubSubService: Published message msg_998 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,499] com.plivo.core.service.PubSubService: Published message msg_999 to topic backpressure-test
+INFO  [2026-01-30 06:26:38,499] com.plivo.core.service.PubSubService: Published message msg_1000 to topic backpressure-test
+ERROR [2026-01-30 06:26:38,499] com.plivo.core.service.PubSubService: Failed to add message to queue for topic backpressure-test - queue overflow
+WARN  [2026-01-30 06:26:38,499] com.plivo.server.websocket.WebSocketMessageHandler: Queue overflow for topic backpressure-test: 1000/1000
+WARN  [2026-01-30 06:26:38,501] com.plivo.core.service.PubSubService: Initiated graceful shutdown for topic backpressure-test - no longer accepting messages
+WARN  [2026-01-30 06:26:38,501] com.plivo.server.websocket.WebSocketMessageHandler: Initiated graceful shutdown for topic backpressure-test
+WARN  [2026-01-30 06:26:38,501] com.plivo.core.service.PubSubService: Topic backpressure-test is not accepting messages - queue is full
+WARN  [2026-01-30 06:26:38,501] com.plivo.server.websocket.WebSocketMessageHandler: Queue overflow for topic backpressure-test: 1000/1000
+WARN  [2026-01-30 06:26:38,501] com.plivo.core.service.PubSubService: Initiated graceful shutdown for topic backpressure-test - no longer accepting messages
+WARN  [2026-01-30 06:26:38,501] com.plivo.server.websocket.WebSocketMessageHandler: Initiated graceful shutdown for topic backpressure-test
+INFO  [2026-01-30 06:26:38,501] com.plivo.server.websocket.PubSubWebSocket: WebSocket connection closed: 1000 - null
+INFO  [2026-01-30 06:26:38,503] com.plivo.server.resources.TopicResource: Deleting topic: backpressure-test
+INFO  [2026-01-30 06:26:38,503] com.plivo.server.resources.TopicResource: Topic deleted successfully: backpressure-test
+[0:0:0:0:0:0:0:1] - - [30/Jan/2026:06:26:38 +0000] "DELETE /topics/backpressure-test HTTP/1.1" 200 48 "-" "python-requests/2.32.5" 1
+INFO  [2026-01-30 06:26:46,857] com.plivo.server.resources.TopicResource: Deleting topic: payments
+INFO  [2026-01-30 06:26:46,857] com.plivo.server.resources.TopicResource: Topic deleted successfully: payments
+[0:0:0:0:0:0:0:1] - - [30/Jan/2026:06:26:46 +0000] "DELETE /topics/payments HTTP/1.1" 200 39 "-" "curl/8.7.1" 1
+[0:0:0:0:0:0:0:1] - - [30/Jan/2026:06:26:46 +0000] "GET /health HTTP/1.1" 200 44 "-" "curl/8.7.1" 1
+INFO  [2026-01-30 06:27:40,657] com.plivo.server.resources.TopicResource: Creating topic: test-duplicate
+INFO  [2026-01-30 06:27:40,657] com.plivo.server.resources.TopicResource: Topic created successfully: test-duplicate
+[0:0:0:0:0:0:0:1] - - [30/Jan/2026:06:27:40 +0000] "POST /topics HTTP/1.1" 201 45 "-" "curl/8.7.1" 10
+INFO  [2026-01-30 06:27:40,666] com.plivo.server.resources.TopicResource: Creating topic: test-duplicate
+WARN  [2026-01-30 06:27:40,666] com.plivo.server.resources.TopicResource: Topic already exists: test-duplicate
+[0:0:0:0:0:0:0:1] - - [30/Jan/2026:06:27:40 +0000] "POST /topics HTTP/1.1" 409 57 "-" "curl/8.7.1" 1
+[0:0:0:0:0:0:0:1] - - [30/Jan/2026:06:27:58 +0000] "GET /health HTTP/1.1" 200 45 "-" "python-requests/2.32.5" 1
+[0:0:0:0:0:0:0:1] - - [30/Jan/2026:06:27:58 +0000] "GET /health HTTP/1.1" 200 45 "-" "python-requests/2.32.5" 1
+INFO  [2026-01-30 06:27:59,000] com.plivo.server.resources.TopicResource: Creating topic: orders
+INFO  [2026-01-30 06:27:59,000] com.plivo.server.resources.TopicResource: Topic created successfully: orders
+[0:0:0:0:0:0:0:1] - - [30/Jan/2026:06:27:59 +0000] "POST /topics HTTP/1.1" 201 37 "-" "python-requests/2.32.5" 0
+INFO  [2026-01-30 06:27:59,002] com.plivo.server.resources.TopicResource: Creating topic: notifications
+INFO  [2026-01-30 06:27:59,002] com.plivo.server.resources.TopicResource: Topic created successfully: notifications
+[0:0:0:0:0:0:0:1] - - [30/Jan/2026:06:27:59 +0000] "POST /topics HTTP/1.1" 201 44 "-" "python-requests/2.32.5" 1
+[0:0:0:0:0:0:0:1] - - [30/Jan/2026:06:27:59 +0000] "GET /topics HTTP/1.1" 200 129 "-" "python-requests/2.32.5" 0
+[0:0:0:0:0:0:0:1] - - [30/Jan/2026:06:27:59 +0000] "GET /stats HTTP/1.1" 200 147 "-" "python-requests/2.32.5" 1
+[0:0:0:0:0:0:0:1] - - [30/Jan/2026:06:27:59 +0000] "GET /ws HTTP/1.1" 101 0 "-" "Python/3.9 websockets/15.0.1" 1
+INFO  [2026-01-30 06:27:59,015] com.plivo.server.websocket.PubSubWebSocket: WebSocket connection established: /[0:0:0:0:0:0:0:1]:52507
+[0:0:0:0:0:0:0:1] - - [30/Jan/2026:06:27:59 +0000] "GET /ws HTTP/1.1" 101 0 "-" "Python/3.9 websockets/15.0.1" 0
+INFO  [2026-01-30 06:27:59,017] com.plivo.server.websocket.PubSubWebSocket: WebSocket connection established: /[0:0:0:0:0:0:0:1]:52508
+[0:0:0:0:0:0:0:1] - - [30/Jan/2026:06:27:59 +0000] "GET /ws HTTP/1.1" 101 0 "-" "Python/3.9 websockets/15.0.1" 1
+INFO  [2026-01-30 06:27:59,018] com.plivo.server.websocket.PubSubWebSocket: WebSocket connection established: /[0:0:0:0:0:0:0:1]:52509
+[0:0:0:0:0:0:0:1] - - [30/Jan/2026:06:27:59 +0000] "GET /ws HTTP/1.1" 101 0 "-" "Python/3.9 websockets/15.0.1" 1
+INFO  [2026-01-30 06:27:59,019] com.plivo.server.websocket.PubSubWebSocket: WebSocket connection established: /[0:0:0:0:0:0:0:1]:52510
+[0:0:0:0:0:0:0:1] - - [30/Jan/2026:06:27:59 +0000] "GET /ws HTTP/1.1" 101 0 "-" "Python/3.9 websockets/15.0.1" 0
+INFO  [2026-01-30 06:27:59,020] com.plivo.server.websocket.PubSubWebSocket: WebSocket connection established: /[0:0:0:0:0:0:0:1]:52511
+INFO  [2026-01-30 06:27:59,020] com.plivo.core.service.PubSubService: Client orders_sub_1 subscribed to topic orders
+INFO  [2026-01-30 06:27:59,021] com.plivo.core.service.PubSubService: Client orders_sub_2 subscribed to topic orders
+INFO  [2026-01-30 06:27:59,021] com.plivo.core.service.PubSubService: Client notif_sub_1 subscribed to topic notifications
+INFO  [2026-01-30 06:27:59,021] com.plivo.core.service.PubSubService: Client notif_sub_2 subscribed to topic notifications
+INFO  [2026-01-30 06:27:59,022] com.plivo.core.service.PubSubService: Published message order_001 to topic orders
+INFO  [2026-01-30 06:27:59,022] com.plivo.core.service.PubSubService: Published message notif_001 to topic notifications
+INFO  [2026-01-30 06:27:59,022] com.plivo.server.websocket.PubSubWebSocket: WebSocket connection closed: 1000 - null
+INFO  [2026-01-30 06:27:59,022] com.plivo.core.service.PubSubService: Removed subscription for client orders_sub_1 from topic orders
+INFO  [2026-01-30 06:27:59,022] com.plivo.server.websocket.PubSubWebSocket: Removed all subscriptions for client: orders_sub_1
+INFO  [2026-01-30 06:27:59,023] com.plivo.server.websocket.PubSubWebSocket: WebSocket connection closed: 1000 - null
+INFO  [2026-01-30 06:27:59,023] com.plivo.core.service.PubSubService: Removed subscription for client orders_sub_2 from topic orders
+INFO  [2026-01-30 06:27:59,023] com.plivo.server.websocket.PubSubWebSocket: Removed all subscriptions for client: orders_sub_2
+INFO  [2026-01-30 06:27:59,023] com.plivo.server.websocket.PubSubWebSocket: WebSocket connection closed: 1000 - null
+INFO  [2026-01-30 06:27:59,023] com.plivo.core.service.PubSubService: Removed subscription for client notif_sub_1 from topic notifications
+INFO  [2026-01-30 06:27:59,023] com.plivo.server.websocket.PubSubWebSocket: Removed all subscriptions for client: notif_sub_1
+INFO  [2026-01-30 06:27:59,023] com.plivo.server.websocket.PubSubWebSocket: WebSocket connection closed: 1000 - null
+INFO  [2026-01-30 06:27:59,023] com.plivo.core.service.PubSubService: Removed subscription for client notif_sub_2 from topic notifications
+INFO  [2026-01-30 06:27:59,023] com.plivo.server.websocket.PubSubWebSocket: Removed all subscriptions for client: notif_sub_2
+INFO  [2026-01-30 06:27:59,023] com.plivo.server.websocket.PubSubWebSocket: WebSocket connection closed: 1000 - null
+[0:0:0:0:0:0:0:1] - - [30/Jan/2026:06:27:59 +0000] "GET /ws HTTP/1.1" 101 0 "-" "Python/3.9 websockets/15.0.1" 0
+INFO  [2026-01-30 06:27:59,024] com.plivo.server.websocket.PubSubWebSocket: WebSocket connection established: /[0:0:0:0:0:0:0:1]:52512
+[0:0:0:0:0:0:0:1] - - [30/Jan/2026:06:27:59 +0000] "GET /ws HTTP/1.1" 101 0 "-" "Python/3.9 websockets/15.0.1" 0
+INFO  [2026-01-30 06:27:59,025] com.plivo.server.websocket.PubSubWebSocket: WebSocket connection established: /[0:0:0:0:0:0:0:1]:52513
+[0:0:0:0:0:0:0:1] - - [30/Jan/2026:06:27:59 +0000] "GET /ws HTTP/1.1" 101 0 "-" "Python/3.9 websockets/15.0.1" 0
+INFO  [2026-01-30 06:27:59,027] com.plivo.server.websocket.PubSubWebSocket: WebSocket connection established: /[0:0:0:0:0:0:0:1]:52514
+INFO  [2026-01-30 06:27:59,027] com.plivo.core.service.PubSubService: Client isolation_orders subscribed to topic orders
+INFO  [2026-01-30 06:27:59,027] com.plivo.core.service.PubSubService: Client isolation_notif subscribed to topic notifications
+INFO  [2026-01-30 06:27:59,027] com.plivo.core.service.PubSubService: Published message iso_test_001 to topic orders
+INFO  [2026-01-30 06:28:00,029] com.plivo.server.websocket.PubSubWebSocket: WebSocket connection closed: 1000 - null
+INFO  [2026-01-30 06:28:00,029] com.plivo.core.service.PubSubService: Removed subscription for client isolation_orders from topic orders
+INFO  [2026-01-30 06:28:00,029] com.plivo.server.websocket.PubSubWebSocket: Removed all subscriptions for client: isolation_orders
+INFO  [2026-01-30 06:28:00,029] com.plivo.server.websocket.PubSubWebSocket: WebSocket connection closed: 1000 - null
+INFO  [2026-01-30 06:28:00,029] com.plivo.core.service.PubSubService: Removed subscription for client isolation_notif from topic notifications
+INFO  [2026-01-30 06:28:00,029] com.plivo.server.websocket.PubSubWebSocket: Removed all subscriptions for client: isolation_notif
+INFO  [2026-01-30 06:28:00,029] com.plivo.server.websocket.PubSubWebSocket: WebSocket connection closed: 1000 - null
+[0:0:0:0:0:0:0:1] - - [30/Jan/2026:06:28:00 +0000] "GET /ws HTTP/1.1" 101 0 "-" "Python/3.9 websockets/15.0.1" 1
+INFO  [2026-01-30 06:28:00,032] com.plivo.server.websocket.PubSubWebSocket: WebSocket connection established: /[0:0:0:0:0:0:0:1]:52517
+[0:0:0:0:0:0:0:1] - - [30/Jan/2026:06:28:00 +0000] "GET /ws HTTP/1.1" 101 0 "-" "Python/3.9 websockets/15.0.1" 0
+INFO  [2026-01-30 06:28:00,033] com.plivo.server.websocket.PubSubWebSocket: WebSocket connection established: /[0:0:0:0:0:0:0:1]:52518
+[0:0:0:0:0:0:0:1] - - [30/Jan/2026:06:28:00 +0000] "GET /ws HTTP/1.1" 101 0 "-" "Python/3.9 websockets/15.0.1" 1
+INFO  [2026-01-30 06:28:00,035] com.plivo.server.websocket.PubSubWebSocket: WebSocket connection established: /[0:0:0:0:0:0:0:1]:52519
+[0:0:0:0:0:0:0:1] - - [30/Jan/2026:06:28:00 +0000] "GET /ws HTTP/1.1" 101 0 "-" "Python/3.9 websockets/15.0.1" 0
+INFO  [2026-01-30 06:28:00,036] com.plivo.server.websocket.PubSubWebSocket: WebSocket connection established: /[0:0:0:0:0:0:0:1]:52520
+INFO  [2026-01-30 06:28:00,036] com.plivo.core.service.PubSubService: Client multi_pub_sub subscribed to topic orders
+INFO  [2026-01-30 06:28:00,037] com.plivo.core.service.PubSubService: Published message pub1_msg to topic orders
+INFO  [2026-01-30 06:28:00,037] com.plivo.core.service.PubSubService: Published message pub2_msg to topic orders
+INFO  [2026-01-30 06:28:00,037] com.plivo.core.service.PubSubService: Published message pub3_msg to topic orders
+INFO  [2026-01-30 06:28:00,037] com.plivo.server.websocket.PubSubWebSocket: WebSocket connection closed: 1000 - null
+INFO  [2026-01-30 06:28:00,037] com.plivo.core.service.PubSubService: Removed subscription for client multi_pub_sub from topic orders
+INFO  [2026-01-30 06:28:00,037] com.plivo.server.websocket.PubSubWebSocket: Removed all subscriptions for client: multi_pub_sub
+INFO  [2026-01-30 06:28:00,038] com.plivo.server.websocket.PubSubWebSocket: WebSocket connection closed: 1000 - null
+INFO  [2026-01-30 06:28:00,038] com.plivo.server.websocket.PubSubWebSocket: WebSocket connection closed: 1000 - null
+INFO  [2026-01-30 06:28:00,038] com.plivo.server.websocket.PubSubWebSocket: WebSocket connection closed: 1000 - null
+[0:0:0:0:0:0:0:1] - - [30/Jan/2026:06:28:00 +0000] "GET /ws HTTP/1.1" 101 0 "-" "Python/3.9 websockets/15.0.1" 0
+INFO  [2026-01-30 06:28:00,039] com.plivo.server.websocket.PubSubWebSocket: WebSocket connection established: /[0:0:0:0:0:0:0:1]:52521
+[0:0:0:0:0:0:0:1] - - [30/Jan/2026:06:28:00 +0000] "GET /ws HTTP/1.1" 101 0 "-" "Python/3.9 websockets/15.0.1" 1
+INFO  [2026-01-30 06:28:00,041] com.plivo.server.websocket.PubSubWebSocket: WebSocket connection established: /[0:0:0:0:0:0:0:1]:52522
+INFO  [2026-01-30 06:28:00,041] com.plivo.core.service.PubSubService: Published message hist_msg_1 to topic notifications
+INFO  [2026-01-30 06:28:00,041] com.plivo.core.service.PubSubService: Published message hist_msg_2 to topic notifications
+INFO  [2026-01-30 06:28:00,041] com.plivo.core.service.PubSubService: Published message hist_msg_3 to topic notifications
+INFO  [2026-01-30 06:28:00,041] com.plivo.core.service.PubSubService: Published message hist_msg_4 to topic notifications
+INFO  [2026-01-30 06:28:00,042] com.plivo.core.service.PubSubService: Published message hist_msg_5 to topic notifications
+INFO  [2026-01-30 06:28:00,042] com.plivo.core.service.PubSubService: Client history_tester subscribed to topic notifications
+INFO  [2026-01-30 06:28:00,042] com.plivo.core.service.PubSubService: Sending 3 historical messages to client history_tester
+INFO  [2026-01-30 06:28:00,042] com.plivo.server.websocket.PubSubWebSocket: WebSocket connection closed: 1000 - null
+INFO  [2026-01-30 06:28:00,042] com.plivo.server.websocket.PubSubWebSocket: WebSocket connection closed: 1000 - null
+INFO  [2026-01-30 06:28:00,042] com.plivo.core.service.PubSubService: Removed subscription for client history_tester from topic notifications
+INFO  [2026-01-30 06:28:00,042] com.plivo.server.websocket.PubSubWebSocket: Removed all subscriptions for client: history_tester
+[0:0:0:0:0:0:0:1] - - [30/Jan/2026:06:28:00 +0000] "GET /stats HTTP/1.1" 200 147 "-" "python-requests/2.32.5" 1
+INFO  [2026-01-30 06:28:00,046] com.plivo.server.resources.TopicResource: Deleting topic: orders
+INFO  [2026-01-30 06:28:00,046] com.plivo.server.resources.TopicResource: Topic deleted successfully: orders
+[0:0:0:0:0:0:0:1] - - [30/Jan/2026:06:28:00 +0000] "DELETE /topics/orders HTTP/1.1" 200 37 "-" "python-requests/2.32.5" 0
+INFO  [2026-01-30 06:28:00,048] com.plivo.server.resources.TopicResource: Deleting topic: notifications
+INFO  [2026-01-30 06:28:00,048] com.plivo.server.resources.TopicResource: Topic deleted successfully: notifications
+[0:0:0:0:0:0:0:1] - - [30/Jan/2026:06:28:00 +0000] "DELETE /topics/notifications HTTP/1.1" 200 44 "-" "python-requests/2.32.5" 1

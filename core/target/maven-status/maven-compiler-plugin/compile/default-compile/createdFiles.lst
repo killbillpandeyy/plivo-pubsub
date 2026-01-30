@@ -1,5 +1,8 @@
+com/plivo/core/exceptions/QueueOverflowException.class
+com/plivo/core/service/PubSubService.class
+com/plivo/core/service/WebSocketErrorService.class
 com/plivo/core/exceptions/TopicNotFoundException.class
 com/plivo/core/exceptions/TopicAlreadyExistsException.class
 com/plivo/core/health/ApplicationHealthCheck.class
+com/plivo/core/service/PubSubService$QueueStats.class
 com/plivo/core/repository/TopicRepository.class
-com/plivo/core/service/PubSubService.class

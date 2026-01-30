@@ -2,7 +2,9 @@ package com.plivo.server.websocket;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.plivo.core.exceptions.TopicNotFoundException;
+import com.plivo.core.exceptions.QueueOverflowException;
 import com.plivo.core.service.PubSubService;
+import com.plivo.core.service.WebSocketErrorService;
 import com.plivo.models.MessageEnvelope;
 import com.plivo.models.Subscription;
 import com.plivo.models.ws.request.*;
@@ -24,6 +26,7 @@ public class WebSocketMessageHandler implements ClientMessageVisitor {
     private final PubSubService pubSubService;
     private final ObjectMapper objectMapper;
     private final ConcurrentHashMap<Session, String> sessionToClientId;
+    private final WebSocketErrorService errorService;
     
     public WebSocketMessageHandler(
             Session session,
@@ -34,6 +37,7 @@ public class WebSocketMessageHandler implements ClientMessageVisitor {
         this.pubSubService = pubSubService;
         this.objectMapper = objectMapper;
         this.sessionToClientId = sessionToClientId;
+        this.errorService = new WebSocketErrorService(session, objectMapper);
     }
     
     @Override
@@ -169,6 +173,20 @@ public class WebSocketMessageHandler implements ClientMessageVisitor {
                 });
             }
             
+        } catch (QueueOverflowException e) {
+            // Handle backpressure - queue is full, consumers are slow
+            log.warn("Queue overflow for topic {}: {}/{}", e.getTopicName(), e.getQueueSize(), e.getQueueCapacity());
+            String errorMsg = String.format("Topic queue is full (%d/%d messages). Consumers are slow. Topic has stopped accepting new messages.",
+                    e.getQueueSize(), e.getQueueCapacity());
+            sendError("CONSUMER_IS_SLOW", errorMsg, request.getRequestId());
+            
+            // Initiate graceful shutdown for this topic
+            try {
+                pubSubService.initiateGracefulShutdown(e.getTopicName());
+                log.warn("Initiated graceful shutdown for topic {}", e.getTopicName());
+            } catch (Exception ex) {
+                log.error("Failed to initiate graceful shutdown: {}", ex.getMessage());
+            }
         } catch (TopicNotFoundException e) {
             sendError("TOPIC_NOT_FOUND", e.getMessage(), request.getRequestId());
         } catch (Exception e) {
@@ -200,7 +218,6 @@ public class WebSocketMessageHandler implements ClientMessageVisitor {
     }
     
     private void sendError(String code, String message, String requestId) {
-        ErrorResponse error = new ErrorResponse(code, message, requestId);
-        sendMessage(error);
+        errorService.sendError(code, message, requestId);
     }
 }

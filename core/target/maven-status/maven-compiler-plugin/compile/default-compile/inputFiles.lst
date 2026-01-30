@@ -2,4 +2,6 @@
 /Users/krishna/Desktop/plivo/core/src/main/java/com/plivo/core/exceptions/TopicAlreadyExistsException.java
 /Users/krishna/Desktop/plivo/core/src/main/java/com/plivo/core/exceptions/TopicNotFoundException.java
 /Users/krishna/Desktop/plivo/core/src/main/java/com/plivo/core/health/ApplicationHealthCheck.java
+/Users/krishna/Desktop/plivo/core/src/main/java/com/plivo/core/service/WebSocketErrorService.java
+/Users/krishna/Desktop/plivo/core/src/main/java/com/plivo/core/exceptions/QueueOverflowException.java
 /Users/krishna/Desktop/plivo/core/src/main/java/com/plivo/core/service/PubSubService.java

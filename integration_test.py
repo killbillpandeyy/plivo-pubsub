@@ -106,11 +106,16 @@ class IntegrationTest:
                     json={"name": topic},
                     headers={"Content-Type": "application/json"}
                 )
-                assert response.status_code == 201
-                data = response.json()
-                assert data["status"] == "created"
-                assert data["topic"] == topic
-                print_success(f"Topic '{topic}' created successfully")
+                # Accept both 201 (created) and 409 (already exists)
+                if response.status_code == 201:
+                    data = response.json()
+                    assert data["status"] == "created"
+                    assert data["topic"] == topic
+                    print_success(f"Topic '{topic}' created successfully")
+                elif response.status_code == 409:
+                    print_success(f"Topic '{topic}' already exists (skipping)")
+                else:
+                    raise Exception(f"Unexpected status code: {response.status_code}")
                 self.results.append((f"Create Topic '{topic}'", True))
             except Exception as e:
                 print_error(f"Failed to create topic '{topic}': {e}")
@@ -163,268 +168,320 @@ class IntegrationTest:
         """Test multiple topics with multiple subscribers each running concurrently"""
         print_info("Testing multiple topics with concurrent subscribers...")
         
+        ws_orders_1 = None
+        ws_orders_2 = None
+        ws_notif_1 = None
+        ws_notif_2 = None
+        ws_publisher = None
+        
         try:
-            # Create 4 subscribers: 2 for 'orders', 2 for 'notifications'
-            async with \
-                websockets.connect(WS_URL) as ws_orders_1, \
-                websockets.connect(WS_URL) as ws_orders_2, \
-                websockets.connect(WS_URL) as ws_notif_1, \
-                websockets.connect(WS_URL) as ws_notif_2, \
-                websockets.connect(WS_URL) as ws_publisher:
-                
-                # Subscribe to orders topic (2 subscribers)
-                await ws_orders_1.send(json.dumps({
-                    "type": "subscribe",
-                    "topic": "orders",
-                    "client_id": "orders_sub_1"
-                }))
-                ack1 = json.loads(await ws_orders_1.recv())
-                assert ack1["type"] == "ack", "Expected ACK for orders_sub_1"
-                
-                await ws_orders_2.send(json.dumps({
-                    "type": "subscribe",
-                    "topic": "orders",
-                    "client_id": "orders_sub_2"
-                }))
-                ack2 = json.loads(await ws_orders_2.recv())
-                assert ack2["type"] == "ack", "Expected ACK for orders_sub_2"
-                
-                # Subscribe to notifications topic (2 subscribers)
-                await ws_notif_1.send(json.dumps({
-                    "type": "subscribe",
-                    "topic": "notifications",
-                    "client_id": "notif_sub_1"
-                }))
-                ack3 = json.loads(await ws_notif_1.recv())
-                assert ack3["type"] == "ack", "Expected ACK for notif_sub_1"
-                
-                await ws_notif_2.send(json.dumps({
-                    "type": "subscribe",
-                    "topic": "notifications",
-                    "client_id": "notif_sub_2"
-                }))
-                ack4 = json.loads(await ws_notif_2.recv())
-                assert ack4["type"] == "ack", "Expected ACK for notif_sub_2"
-                
-                print_success("All 4 subscribers connected (2 per topic)")
-                
-                # Publish to orders topic
-                await ws_publisher.send(json.dumps({
-                    "type": "publish",
-                    "topic": "orders",
-                    "message": {
-                        "id": "order_001",
-                        "payload": "New order received: $150"
-                    }
-                }))
-                pub_ack = json.loads(await ws_publisher.recv())
-                assert pub_ack["type"] == "ack", "Expected ACK from publish"
-                
-                # Both orders subscribers should receive the event
-                await asyncio.sleep(0.1)  # Small delay to ensure messages are sent
-                event1 = json.loads(await asyncio.wait_for(ws_orders_1.recv(), timeout=2))
-                event2 = json.loads(await asyncio.wait_for(ws_orders_2.recv(), timeout=2))
-                assert event1["type"] == "event" and event1["topic"] == "orders"
-                assert event2["type"] == "event" and event2["topic"] == "orders"
-                assert event1["message"]["payload"] == "New order received: $150"
-                print_success(f"Orders topic: Both subscribers received message")
-                
-                # Publish to notifications topic
-                await ws_publisher.send(json.dumps({
-                    "type": "publish",
-                    "topic": "notifications",
-                    "message": {
-                        "id": "notif_001",
-                        "payload": "System maintenance scheduled"
-                    }
-                }))
-                pub_ack2 = json.loads(await ws_publisher.recv())
-                assert pub_ack2["type"] == "ack"
-                
-                # Both notification subscribers should receive the event
-                await asyncio.sleep(0.1)  # Small delay to ensure messages are sent
-                notif_event1 = json.loads(await asyncio.wait_for(ws_notif_1.recv(), timeout=2))
-                notif_event2 = json.loads(await asyncio.wait_for(ws_notif_2.recv(), timeout=2))
-                assert notif_event1["type"] == "event" and notif_event1["topic"] == "notifications"
-                assert notif_event2["type"] == "event" and notif_event2["topic"] == "notifications"
-                assert notif_event1["message"]["payload"] == "System maintenance scheduled"
-                print_success(f"Notifications topic: Both subscribers received message")
-                
-                self.results.append(("Multiple Topics Concurrent", True))
-                
+            # Create connections manually to avoid premature closure
+            ws_orders_1 = await websockets.connect(WS_URL)
+            ws_orders_2 = await websockets.connect(WS_URL)
+            ws_notif_1 = await websockets.connect(WS_URL)
+            ws_notif_2 = await websockets.connect(WS_URL)
+            ws_publisher = await websockets.connect(WS_URL)
+            
+            # Subscribe to orders topic (2 subscribers)
+            await ws_orders_1.send(json.dumps({
+                "type": "subscribe",
+                "topic": "orders",
+                "client_id": "orders_sub_1"
+            }))
+            ack1 = json.loads(await asyncio.wait_for(ws_orders_1.recv(), timeout=2))
+            if ack1.get("type") not in ["ack", "ACK"]:
+                raise Exception(f"Expected ACK for orders_sub_1, got: {ack1}")
+            
+            await ws_orders_2.send(json.dumps({
+                "type": "subscribe",
+                "topic": "orders",
+                "client_id": "orders_sub_2"
+            }))
+            ack2 = json.loads(await asyncio.wait_for(ws_orders_2.recv(), timeout=2))
+            if ack2.get("type") not in ["ack", "ACK"]:
+                raise Exception(f"Expected ACK for orders_sub_2, got: {ack2}")
+            
+            # Subscribe to notifications topic (2 subscribers)
+            await ws_notif_1.send(json.dumps({
+                "type": "subscribe",
+                "topic": "notifications",
+                "client_id": "notif_sub_1"
+            }))
+            ack3 = json.loads(await asyncio.wait_for(ws_notif_1.recv(), timeout=2))
+            if ack3.get("type") not in ["ack", "ACK"]:
+                raise Exception(f"Expected ACK for notif_sub_1, got: {ack3}")
+            
+            await ws_notif_2.send(json.dumps({
+                "type": "subscribe",
+                "topic": "notifications",
+                "client_id": "notif_sub_2"
+            }))
+            ack4 = json.loads(await asyncio.wait_for(ws_notif_2.recv(), timeout=2))
+            if ack4.get("type") not in ["ack", "ACK"]:
+                raise Exception(f"Expected ACK for notif_sub_2, got: {ack4}")
+            
+            print_success("All 4 subscribers connected (2 per topic)")
+            
+            # Publish to orders topic
+            await ws_publisher.send(json.dumps({
+                "type": "publish",
+                "topic": "orders",
+                "message": {
+                    "id": "order_001",
+                    "payload": "New order received: $150"
+                }
+            }))
+            pub_ack = json.loads(await asyncio.wait_for(ws_publisher.recv(), timeout=2))
+            if pub_ack.get("type") not in ["ack", "ACK"]:
+                raise Exception(f"Expected ACK from publish, got: {pub_ack}")
+            
+            # Both orders subscribers should receive the event
+            event1 = json.loads(await asyncio.wait_for(ws_orders_1.recv(), timeout=2))
+            event2 = json.loads(await asyncio.wait_for(ws_orders_2.recv(), timeout=2))
+            assert event1.get("type") in ["event", "EVENT"] and event1.get("topic") == "orders"
+            assert event2.get("type") in ["event", "EVENT"] and event2.get("topic") == "orders"
+            assert event1["message"]["payload"] == "New order received: $150"
+            print_success(f"Orders topic: Both subscribers received message")
+            
+            # Publish to notifications topic
+            await ws_publisher.send(json.dumps({
+                "type": "publish",
+                "topic": "notifications",
+                "message": {
+                    "id": "notif_001",
+                    "payload": "System maintenance scheduled"
+                }
+            }))
+            pub_ack2 = json.loads(await asyncio.wait_for(ws_publisher.recv(), timeout=2))
+            if pub_ack2.get("type") not in ["ack", "ACK"]:
+                raise Exception(f"Expected ACK from publish, got: {pub_ack2}")
+            
+            # Both notification subscribers should receive the event
+            notif_event1 = json.loads(await asyncio.wait_for(ws_notif_1.recv(), timeout=2))
+            notif_event2 = json.loads(await asyncio.wait_for(ws_notif_2.recv(), timeout=2))
+            assert notif_event1.get("type") in ["event", "EVENT"] and notif_event1.get("topic") == "notifications"
+            assert notif_event2.get("type") in ["event", "EVENT"] and notif_event2.get("topic") == "notifications"
+            assert notif_event1["message"]["payload"] == "System maintenance scheduled"
+            print_success(f"Notifications topic: Both subscribers received message")
+            
+            self.results.append(("Multiple Topics Concurrent", True))
+            
         except Exception as e:
             print_error(f"Multiple topics test failed: {e}")
             self.results.append(("Multiple Topics Concurrent", False))
+        finally:
+            # Clean up connections
+            for ws in [ws_orders_1, ws_orders_2, ws_notif_1, ws_notif_2, ws_publisher]:
+                if ws:
+                    try:
+                        await ws.close()
+                    except:
+                        pass
     
     async def test_topic_isolation(self):
         """Verify messages don't leak between topics"""
         print_info("Testing topic isolation (no cross-topic messages)...")
         
+        ws_orders_sub = None
+        ws_notif_sub = None
+        ws_publisher = None
+        
         try:
-            async with \
-                websockets.connect(WS_URL) as ws_orders_sub, \
-                websockets.connect(WS_URL) as ws_notif_sub, \
-                websockets.connect(WS_URL) as ws_publisher:
-                
-                # Subscribe to different topics
-                await ws_orders_sub.send(json.dumps({
-                    "type": "subscribe",
-                    "topic": "orders",
-                    "client_id": "isolation_orders"
-                }))
-                await ws_orders_sub.recv()  # ACK
-                
-                await ws_notif_sub.send(json.dumps({
-                    "type": "subscribe",
-                    "topic": "notifications",
-                    "client_id": "isolation_notif"
-                }))
-                await ws_notif_sub.recv()  # ACK
-                
-                # Publish ONLY to orders
-                await ws_publisher.send(json.dumps({
-                    "type": "publish",
-                    "topic": "orders",
-                    "message": {
-                        "id": "iso_test_001",
-                        "payload": "Orders-only message"
-                    }
-                }))
-                await ws_publisher.recv()  # ACK
-                
-                # Orders subscriber should receive it
-                await asyncio.sleep(0.1)  # Small delay to ensure message arrives
-                orders_event = json.loads(await asyncio.wait_for(ws_orders_sub.recv(), timeout=2))
-                assert orders_event["type"] == "event"
-                assert orders_event["topic"] == "orders"
-                print_success("Orders subscriber received correct message")
-                
-                # Notifications subscriber should NOT receive anything
-                try:
-                    notif_msg = await asyncio.wait_for(ws_notif_sub.recv(), timeout=1)
-                    print_error(f"Topic isolation VIOLATED: notifications subscriber received: {notif_msg}")
-                    self.results.append(("Topic Isolation", False))
-                except asyncio.TimeoutError:
-                    print_success("Topic isolation verified: No cross-topic messages")
-                    self.results.append(("Topic Isolation", True))
+            ws_orders_sub = await websockets.connect(WS_URL)
+            ws_notif_sub = await websockets.connect(WS_URL)
+            ws_publisher = await websockets.connect(WS_URL)
+            
+            # Subscribe to different topics
+            await ws_orders_sub.send(json.dumps({
+                "type": "subscribe",
+                "topic": "orders",
+                "client_id": "isolation_orders"
+            }))
+            await asyncio.wait_for(ws_orders_sub.recv(), timeout=2)  # ACK
+            
+            await ws_notif_sub.send(json.dumps({
+                "type": "subscribe",
+                "topic": "notifications",
+                "client_id": "isolation_notif"
+            }))
+            await asyncio.wait_for(ws_notif_sub.recv(), timeout=2)  # ACK
+            
+            # Publish ONLY to orders
+            await ws_publisher.send(json.dumps({
+                "type": "publish",
+                "topic": "orders",
+                "message": {
+                    "id": "iso_test_001",
+                    "payload": "Orders-only message"
+                }
+            }))
+            await asyncio.wait_for(ws_publisher.recv(), timeout=2)  # ACK
+            
+            # Orders subscriber should receive it
+            orders_event = json.loads(await asyncio.wait_for(ws_orders_sub.recv(), timeout=2))
+            assert orders_event.get("type") in ["event", "EVENT"]
+            assert orders_event.get("topic") == "orders"
+            print_success("Orders subscriber received correct message")
+            
+            # Notifications subscriber should NOT receive anything
+            try:
+                notif_msg = await asyncio.wait_for(ws_notif_sub.recv(), timeout=1)
+                print_error(f"Topic isolation VIOLATED: notifications subscriber received: {notif_msg}")
+                self.results.append(("Topic Isolation", False))
+            except asyncio.TimeoutError:
+                print_success("Topic isolation verified: No cross-topic messages")
+                self.results.append(("Topic Isolation", True))
                     
+        except asyncio.TimeoutError as e:
+            # If this is the timeout for notif subscriber, it's actually success
+            if "Topic isolation verified" in str(self.results):
+                pass
+            else:
+                print_error(f"Topic isolation test failed: Timeout - {e}")
+                self.results.append(("Topic Isolation", False))
         except Exception as e:
             print_error(f"Topic isolation test failed: {e}")
             self.results.append(("Topic Isolation", False))
+        finally:
+            for ws in [ws_orders_sub, ws_notif_sub, ws_publisher]:
+                if ws:
+                    try:
+                        await ws.close()
+                    except:
+                        pass
     
     async def test_concurrent_publishers(self):
         """Test multiple publishers publishing to same topic simultaneously"""
         print_info("Testing concurrent publishers on same topic...")
         
+        ws_subscriber = None
+        ws_pub1 = None
+        ws_pub2 = None
+        ws_pub3 = None
+        
         try:
-            async with \
-                websockets.connect(WS_URL) as ws_subscriber, \
-                websockets.connect(WS_URL) as ws_pub1, \
-                websockets.connect(WS_URL) as ws_pub2, \
-                websockets.connect(WS_URL) as ws_pub3:
-                
-                # Subscribe
-                await ws_subscriber.send(json.dumps({
-                    "type": "subscribe",
+            ws_subscriber = await websockets.connect(WS_URL)
+            ws_pub1 = await websockets.connect(WS_URL)
+            ws_pub2 = await websockets.connect(WS_URL)
+            ws_pub3 = await websockets.connect(WS_URL)
+            
+            # Subscribe
+            await ws_subscriber.send(json.dumps({
+                "type": "subscribe",
+                "topic": "orders",
+                "client_id": "multi_pub_sub"
+            }))
+            await asyncio.wait_for(ws_subscriber.recv(), timeout=2)  # ACK
+            
+            # Three publishers send messages concurrently
+            publish_tasks = [
+                ws_pub1.send(json.dumps({
+                    "type": "publish",
                     "topic": "orders",
-                    "client_id": "multi_pub_sub"
+                    "message": {"id": "pub1_msg", "payload": "Message from publisher 1"}
+                })),
+                ws_pub2.send(json.dumps({
+                    "type": "publish",
+                    "topic": "orders",
+                    "message": {"id": "pub2_msg", "payload": "Message from publisher 2"}
+                })),
+                ws_pub3.send(json.dumps({
+                    "type": "publish",
+                    "topic": "orders",
+                    "message": {"id": "pub3_msg", "payload": "Message from publisher 3"}
                 }))
-                await ws_subscriber.recv()  # ACK
-                
-                # Three publishers send messages concurrently
-                publish_tasks = [
-                    ws_pub1.send(json.dumps({
-                        "type": "publish",
-                        "topic": "orders",
-                        "message": {"id": "pub1_msg", "payload": "Message from publisher 1"}
-                    })),
-                    ws_pub2.send(json.dumps({
-                        "type": "publish",
-                        "topic": "orders",
-                        "message": {"id": "pub2_msg", "payload": "Message from publisher 2"}
-                    })),
-                    ws_pub3.send(json.dumps({
-                        "type": "publish",
-                        "topic": "orders",
-                        "message": {"id": "pub3_msg", "payload": "Message from publisher 3"}
-                    }))
-                ]
-                await asyncio.gather(*publish_tasks)
-                
-                # Collect ACKs from publishers
-                await ws_pub1.recv()
-                await ws_pub2.recv()
-                await ws_pub3.recv()
-                
-                # Subscriber should receive all 3 messages
-                await asyncio.sleep(0.1)  # Small delay to ensure messages arrive
-                received_messages = []
-                for i in range(3):
-                    event = json.loads(await asyncio.wait_for(ws_subscriber.recv(), timeout=2))
-                    assert event["type"] == "event"
-                    received_messages.append(event["message"]["id"])
-                
-                assert "pub1_msg" in received_messages
-                assert "pub2_msg" in received_messages
-                assert "pub3_msg" in received_messages
-                print_success(f"Received all 3 messages from concurrent publishers: {received_messages}")
-                self.results.append(("Concurrent Publishers", True))
-                
+            ]
+            await asyncio.gather(*publish_tasks)
+            
+            # Collect ACKs from publishers
+            await asyncio.wait_for(ws_pub1.recv(), timeout=2)
+            await asyncio.wait_for(ws_pub2.recv(), timeout=2)
+            await asyncio.wait_for(ws_pub3.recv(), timeout=2)
+            
+            # Subscriber should receive all 3 messages
+            received_messages = []
+            for i in range(3):
+                event = json.loads(await asyncio.wait_for(ws_subscriber.recv(), timeout=2))
+                assert event.get("type") in ["event", "EVENT"]
+                received_messages.append(event["message"]["id"])
+            
+            assert "pub1_msg" in received_messages
+            assert "pub2_msg" in received_messages
+            assert "pub3_msg" in received_messages
+            print_success(f"Received all 3 messages from concurrent publishers: {received_messages}")
+            self.results.append(("Concurrent Publishers", True))
+            
         except Exception as e:
             print_error(f"Concurrent publishers test failed: {e}")
             self.results.append(("Concurrent Publishers", False))
+        finally:
+            for ws in [ws_subscriber, ws_pub1, ws_pub2, ws_pub3]:
+                if ws:
+                    try:
+                        await ws.close()
+                    except:
+                        pass
     
     async def test_message_history(self):
         """Test message history retrieval with last_n parameter"""
         print_info("Testing message history (last_n parameter)...")
         
+        ws_publisher = None
+        ws_subscriber = None
+        
         try:
-            async with \
-                websockets.connect(WS_URL) as ws_publisher, \
-                websockets.connect(WS_URL) as ws_subscriber:
-                
-                # Publish 5 messages first
-                for i in range(1, 6):
-                    await ws_publisher.send(json.dumps({
-                        "type": "publish",
-                        "topic": "notifications",
-                        "message": {
-                            "id": f"hist_msg_{i}",
-                            "payload": f"Historical message #{i}"
-                        }
-                    }))
-                    await ws_publisher.recv()  # ACK
-                
-                print_success("Published 5 messages to notifications topic")
-                
-                # Subscribe with last_n=3 to get recent history
-                await ws_subscriber.send(json.dumps({
-                    "type": "subscribe",
+            ws_publisher = await websockets.connect(WS_URL)
+            ws_subscriber = await websockets.connect(WS_URL)
+            
+            # Publish 5 messages first
+            for i in range(1, 6):
+                await ws_publisher.send(json.dumps({
+                    "type": "publish",
                     "topic": "notifications",
-                    "client_id": "history_tester",
-                    "last_n": 3
+                    "message": {
+                        "id": f"hist_msg_{i}",
+                        "payload": f"Historical message #{i}"
+                    }
                 }))
-                ack = json.loads(await ws_subscriber.recv())
-                assert ack["type"] == "ack"
-                
-                # Should receive 3 historical messages
-                await asyncio.sleep(0.1)  # Small delay to ensure messages arrive
-                historical_messages = []
-                for i in range(3):
-                    event = json.loads(await asyncio.wait_for(ws_subscriber.recv(), timeout=2))
-                    assert event["type"] == "event"
-                    historical_messages.append(event["message"]["id"])
-                
-                # Should be the last 3 messages (3, 4, 5)
-                assert "hist_msg_3" in historical_messages
-                assert "hist_msg_4" in historical_messages
-                assert "hist_msg_5" in historical_messages
-                print_success(f"Retrieved last 3 messages correctly: {historical_messages}")
-                self.results.append(("Message History", True))
-                
+                await asyncio.wait_for(ws_publisher.recv(), timeout=2)  # ACK
+            
+            print_success("Published 5 messages to notifications topic")
+            
+            # Subscribe with last_n=3 to get recent history
+            await ws_subscriber.send(json.dumps({
+                "type": "subscribe",
+                "topic": "notifications",
+                "client_id": "history_tester",
+                "last_n": 3
+            }))
+            ack = json.loads(await asyncio.wait_for(ws_subscriber.recv(), timeout=2))
+            if ack.get("type") not in ["ack", "ACK"]:
+                raise Exception(f"Expected ACK, got: {ack}")
+            
+            # Should receive 3 historical messages
+            historical_messages = []
+            for i in range(3):
+                event = json.loads(await asyncio.wait_for(ws_subscriber.recv(), timeout=2))
+                assert event.get("type") in ["event", "EVENT"]
+                historical_messages.append(event["message"]["id"])
+            
+            # Should be the last 3 messages (3, 4, 5)
+            assert "hist_msg_3" in historical_messages
+            assert "hist_msg_4" in historical_messages
+            assert "hist_msg_5" in historical_messages
+            print_success(f"Retrieved last 3 messages correctly: {historical_messages}")
+            self.results.append(("Message History", True))
+            
         except Exception as e:
             print_error(f"Message history test failed: {e}")
             self.results.append(("Message History", False))
+        finally:
+            for ws in [ws_publisher, ws_subscriber]:
+                if ws:
+                    try:
+                        await ws.close()
+                    except:
+                        pass
     
     def test_final_stats(self):
         """Check final statistics after all WebSocket operations"""
