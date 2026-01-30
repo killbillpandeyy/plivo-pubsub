@@ -11,9 +11,6 @@ COPY models/pom.xml models/
 COPY core/pom.xml core/
 COPY server/pom.xml server/
 
-# Download dependencies (this layer will be cached if POMs don't change)
-RUN mvn dependency:go-offline -B
-
 # Copy the source code
 COPY models/src models/src
 COPY core/src core/src
@@ -23,7 +20,7 @@ COPY server/src server/src
 RUN mvn clean install -DskipTests
 
 # Stage 2: Run the application
-FROM openjdk:11-jre-slim
+FROM eclipse-temurin:11-jre
 
 WORKDIR /app
 
@@ -31,7 +28,7 @@ WORKDIR /app
 COPY --from=builder /app/server/target/server-1.0-SNAPSHOT.jar /app/server.jar
 
 # Copy the configuration file
-COPY server/config.yml /app/config.yml
+COPY server/config/config.yml /app/config.yml
 
 # Expose application and admin ports
 EXPOSE 8080 8081
